@@ -49,6 +49,7 @@ class ProcessSchedule(Functions, SqlFuncs):
         self.BLOGPOST_IDS = ','.join([str(record['blogpost_id']) for record in records])
         self.BLOGSITE_IDS = ','.join([str(record['blogsite_id']) for record in records])
         self.process = True if records else False
+        print('done getting sql')
 
     def process_bloggers(self):
         """[Function to update blogger table]
@@ -85,6 +86,9 @@ class ProcessSchedule(Functions, SqlFuncs):
 
             connection.close()
             cursor.close()
+
+            print('done processing bloggers')
+            return True
 
     def process_entity_sentiments(self):
         """[Function to update blogpost_entitysentiment table]
@@ -285,13 +289,13 @@ class ProcessSchedule(Functions, SqlFuncs):
             data_narratives = self.entity_narratives(sentences_scored, record, objectEntitiesList, "elastic", entity_count)
             return data_narratives
 
-
-if __name__ == "__main__":
+def main():
     connection_credentials = Functions().get_config2("BLOGTRACKERS")
     ps = ProcessSchedule(connection_credentials)
     ps.get_data_after_last_sql()
 
-    # ps.process_bloggers()
+    if ps.process_bloggers():
+        ps.update_trigger_table()
     # ps.process_posts()
     # ps.process_blogsites()
     # ps.process_languages()
@@ -300,7 +304,7 @@ if __name__ == "__main__":
     # # # ps.process_entity_sentiments()
     # ps.process_narratives()
 
-    # ps.update_trigger_table()
+    # 
 
     print('seun is testing')
     
@@ -310,5 +314,37 @@ if __name__ == "__main__":
     #     FROM blogposts 
     #     WHERE blogpost_id in ({BLOGPOST_IDS})
     # """
+
+import sched, time
+import time
+import atexit
+
+from apscheduler.schedulers.background import BackgroundScheduler
+from apscheduler.executors.pool import ThreadPoolExecutor, ProcessPoolExecutor
+
+if __name__ == "__main__":
+    # s = sched.scheduler(time.time, time.sleep)
+
+    # s.enter(60, 1, main, (s,))
+
+    executors = {
+        'default': ThreadPoolExecutor(60),
+        'processpool': ProcessPoolExecutor(60)
+    }
+
+    job_defaults = {
+        'coalesce': False,
+        'max_instances': 50
+    }
+    scheduler = BackgroundScheduler(job_defaults = job_defaults)
+    # scheduler = BackgroundScheduler()
+    scheduler.add_job(func=main, trigger="interval", seconds=3)
+    scheduler.start()
+
+    # Shut down the scheduler when exiting the app
+    atexit.register(lambda: scheduler.shutdown())
+    
+    print('here')
+    # main()
 
     

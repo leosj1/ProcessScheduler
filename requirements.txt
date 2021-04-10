@@ -17,3 +17,5 @@ elasticsearch
 prometheus_client
 aiomysql
 tld
+apscheduler
+pygeoip

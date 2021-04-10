@@ -1,0 +1,2743 @@
+{
+    "statusCode": 200,
+    "host": "view-config-prod-75768c4f9f-rdcxr",
+    "correlationId": "739516f7-007-178b2fb55f2573",
+    "orchestra": {
+        "default:prod:iro": [
+            {
+                "code": "Q-301",
+                "duration": 58,
+                "message": "Request responded in 58ms."
+            },
+            {
+                "code": "Q-302",
+                "duration": 91,
+                "message": "Total contract took 91ms to execute."
+            }
+        ],
+        "default:prod:athenaunified": [
+            {
+                "code": "Q-301",
+                "duration": 97,
+                "message": "Request responded in 97ms."
+            },
+            {
+                "code": "Q-302",
+                "duration": 111,
+                "message": "Total contract took 111ms to execute."
+            }
+        ]
+    },
+    "modules": [
+        {
+            "name": "XAA Flex Banner",
+            "type": "MarketingFlexMessage",
+            "version": 5,
+            "status": "published",
+            "schedule": {
+                "start": null,
+                "end": null,
+                "priority": 1,
+                "expEnabled": false
+            },
+            "triggers": [
+                {
+                    "pageType": "ItemPageByItem",
+                    "pageId": "443574645",
+                    "zone": "ItemBadgeZone2",
+                    "inheritable": false,
+                    "pageIdMap": null
+                },
+                {
+                    "pageType": "ItemPageByItem",
+                    "pageId": "606518560",
+                    "zone": "ItemBadgeZone2",
+                    "inheritable": false,
+                    "pageIdMap": null
+                }
+            ],
+            "targeting": {},
+            "configs": {
+                "panels": {
+                    "addSection": "bannerImage",
+                    "bannerImage": {
+                        "alt": "Xbox All Access",
+                        "assetId": "be1c31b0-5265-45b4-3ff9-b886198aa744",
+                        "assetName": "XAA Flex Messaging V3.jpg",
+                        "clickThrough": {
+                            "type": "url",
+                            "value": "https://www.walmart.com/cp/xbox-all-access/8571041",
+                            "rawValue": "https://www.walmart.com/cp/xbox-all-access/8571041",
+                            "tag": null
+                        },
+                        "height": "114",
+                        "src": "https://i5.walmartimages.com/dfw/4ff9c6c9-9f65/k2-_0ec026fc-9734-43c9-8480-f65df00a48af.v1.jpg",
+                        "title": "Xbox All Access",
+                        "width": "486",
+                        "size": "39643",
+                        "contentType": "image/jpeg",
+                        "uid": "V-qdSfwC"
+                    },
+                    "bannerMobileImage": null,
+                    "bannerImageShopNowLink": "https://www.walmart.com/cp/xbox-all-access/8571041",
+                    "image": null,
+                    "mobileImage": null,
+                    "descriptionLabel": null,
+                    "shopNowLabel": null,
+                    "shopNowLink": null,
+                    "shopNowLinkADAText": null,
+                    "promoTitle": null,
+                    "promoDesc": null,
+                    "learnMoreLabel": null,
+                    "learnMoreLink": null,
+                    "learnMoreLinkADAText": null,
+                    "uid": "vD6Md1ah"
+                }
+            },
+            "publishedDate": 1611273263636,
+            "moduleId": "844a7d84-34be-40b9-accf-a36961c3681b",
+            "module_id": "844a7d84-34be-40b9-accf-a36961c3681b",
+            "matchedTrigger": {
+                "pageType": "ItemPageByItem",
+                "pageId": "443574645",
+                "zone": "ItemBadgeZone2",
+                "inheritable": false,
+                "pageIdMap": null
+            }
+        },
+        {
+            "name": "Xbox New Complementary Items Module, Wednesday, September 30, 2020, 10:13:21:22 am",
+            "type": "ComplementaryItems",
+            "version": 4,
+            "status": "published",
+            "schedule": {
+                "start": null,
+                "end": null,
+                "priority": 1,
+                "expEnabled": false
+            },
+            "triggers": [
+                {
+                    "pageType": "ItemPageByItem",
+                    "pageId": "443574645",
+                    "zone": "contentZoneMiddle1",
+                    "inheritable": false,
+                    "pageIdMap": null
+                },
+                {
+                    "pageType": "ItemPageByItem",
+                    "pageId": "606518560",
+                    "zone": "contentZoneMiddle1",
+                    "inheritable": false,
+                    "pageIdMap": null
+                }
+            ],
+            "targeting": {},
+            "configs": {
+                "primaryText": "Complete your Xbox purchase",
+                "secondaryText": null,
+                "description": null,
+                "logo": null,
+                "items": [
+                    {
+                        "mainItem": "752722058",
+                        "backLogList": [],
+                        "uid": "4Ez05Dbv"
+                    },
+                    {
+                        "mainItem": "897028435",
+                        "backLogList": [],
+                        "uid": "hxVqiw34"
+                    },
+                    {
+                        "mainItem": "265882360",
+                        "backLogList": [],
+                        "uid": "R73sDlFR"
+                    },
+                    {
+                        "mainItem": "309259942",
+                        "backLogList": [],
+                        "uid": "SJZOn9Qx"
+                    },
+                    {
+                        "mainItem": "171315679",
+                        "backLogList": [],
+                        "uid": "9XY2i-rn"
+                    },
+                    {
+                        "mainItem": "727753868",
+                        "backLogList": [],
+                        "uid": "idroHfXX"
+                    },
+                    {
+                        "mainItem": "552057007",
+                        "backLogList": [],
+                        "uid": "rDSvB5eD"
+                    },
+                    {
+                        "mainItem": "909839536",
+                        "backLogList": [],
+                        "uid": "mgbmfX3t"
+                    },
+                    {
+                        "mainItem": "231559337",
+                        "backLogList": [],
+                        "uid": "XT3s5oJM"
+                    },
+                    {
+                        "mainItem": "780269283",
+                        "backLogList": [],
+                        "uid": "GzVaemST"
+                    }
+                ],
+                "products": [
+                    {
+                        "id": {
+                            "usItemId": 752722058,
+                            "productId": "2EWYWFC4IXTP",
+                            "offerId": "F881F3106F4740BEBCA43BB2C96529B1",
+                            "sellerId": 147
+                        },
+                        "price": {
+                            "fromPrice": null,
+                            "minPrice": 59.99,
+                            "maxPrice": 59.99,
+                            "currentPrice": 59.99,
+                            "comparisonPrice": null,
+                            "isStrikeThrough": true,
+                            "submapType": null,
+                            "ppu": {
+                                "unitValue": null,
+                                "uomType": "EA"
+                            }
+                        },
+                        "ratings": {
+                            "rating": "4.0",
+                            "totalRatings": "75"
+                        },
+                        "flags": {
+                            "isClearance": null,
+                            "isRollback": null,
+                            "isSpecialBuy": null,
+                            "isReducedPrice": null
+                        },
+                        "imageSrc": "https://i5.walmartimages.com/asr/fdc1de73-6a9d-4c04-b05f-d10bb7eef3ad.a4c540ea7696f71034b7a2e09aa59f66.jpeg",
+                        "productType": "VARIANT",
+                        "canAddToCart": true,
+                        "productUrl": "/ip/Xbox-Wireless-Controller-Carbon-Black/752722058",
+                        "isShippingPassEligible": false,
+                        "isNextDayEligible": false,
+                        "isTwoDayShippingEligible": false,
+                        "brand": "Microsoft",
+                        "productName": "Xbox Wireless Controller – Carbon Black",
+                        "quantity": 1192,
+                        "availabilityStatus": "AVAILABLE",
+                        "geoItemClassification": "NETWORK_GEO"
+                    },
+                    {
+                        "id": {
+                            "usItemId": 897028435,
+                            "productId": "5OL7YP1D6KJK",
+                            "offerId": "B9C5E5134C0544F48676EA4A6690B8B1",
+                            "sellerId": 651
+                        },
+                        "price": {
+                            "fromPrice": null,
+                            "minPrice": 61.89,
+                            "maxPrice": 61.89,
+                            "currentPrice": 61.89,
+                            "comparisonPrice": null,
+                            "isStrikeThrough": true,
+                            "submapType": null,
+                            "ppu": {
+                                "unitValue": null,
+                                "uomType": "EA"
+                            }
+                        },
+                        "ratings": {
+                            "rating": "4.2",
+                            "totalRatings": "106"
+                        },
+                        "flags": {
+                            "isClearance": null,
+                            "isRollback": null,
+                            "isSpecialBuy": null,
+                            "isReducedPrice": null
+                        },
+                        "imageSrc": "https://i5.walmartimages.com/asr/ca5ca095-c075-47ac-8903-61dbe9ee65c7.c0aca60f75a0e742f51b3c3896e346ed.jpeg",
+                        "productType": "VARIANT",
+                        "canAddToCart": true,
+                        "productUrl": "/ip/Xbox-Wireless-Controller-Robot-White/897028435",
+                        "isShippingPassEligible": false,
+                        "isNextDayEligible": false,
+                        "isTwoDayShippingEligible": true,
+                        "brand": "Microsoft",
+                        "productName": "Xbox Wireless Controller – Robot White",
+                        "quantity": 754,
+                        "availabilityStatus": "AVAILABLE",
+                        "geoItemClassification": "NETWORK_GEO"
+                    },
+                    {
+                        "id": {
+                            "usItemId": 265882360,
+                            "productId": "3CFFTZYSVLW8",
+                            "offerId": "0F377AEAE93540EAB280D0A949CDC3D1",
+                            "sellerId": 147
+                        },
+                        "price": {
+                            "fromPrice": null,
+                            "minPrice": null,
+                            "maxPrice": null,
+                            "currentPrice": 67.99,
+                            "comparisonPrice": null,
+                            "isStrikeThrough": true,
+                            "submapType": null,
+                            "ppu": {
+                                "unitValue": null,
+                                "uomType": "EA"
+                            }
+                        },
+                        "ratings": {
+                            "rating": "4.4",
+                            "totalRatings": "178"
+                        },
+                        "flags": {
+                            "isClearance": null,
+                            "isRollback": null,
+                            "isSpecialBuy": null,
+                            "isReducedPrice": null
+                        },
+                        "imageSrc": "https://i5.walmartimages.com/asr/72255485-58c1-424a-b271-bfcdc621fcce.b7d77db2354db33e1fe2a506f5fb133f.jpeg",
+                        "productType": "REGULAR",
+                        "canAddToCart": true,
+                        "productUrl": "/ip/Xbox-Wireless-Controller-Shock-Blue/265882360",
+                        "isShippingPassEligible": false,
+                        "isNextDayEligible": false,
+                        "isTwoDayShippingEligible": false,
+                        "brand": "Microsoft",
+                        "productName": "Xbox Wireless Controller – Shock Blue",
+                        "quantity": 294,
+                        "availabilityStatus": "AVAILABLE",
+                        "geoItemClassification": "NETWORK_GEO"
+                    },
+                    {
+                        "id": {
+                            "usItemId": 309259942,
+                            "productId": "0XGVXL9OPVC7",
+                            "offerId": "3CC027E566A94F12950E01C8E5D23B4A",
+                            "sellerId": 0
+                        },
+                        "price": {
+                            "fromPrice": null,
+                            "minPrice": null,
+                            "maxPrice": null,
+                            "currentPrice": 44.88,
+                            "comparisonPrice": null,
+                            "isStrikeThrough": null,
+                            "submapType": null,
+                            "ppu": {
+                                "unitValue": 44.88,
+                                "uomType": "EA"
+                            }
+                        },
+                        "ratings": {
+                            "rating": "4.2",
+                            "totalRatings": "224"
+                        },
+                        "flags": {
+                            "isClearance": null,
+                            "isRollback": null,
+                            "isSpecialBuy": null,
+                            "isReducedPrice": null
+                        },
+                        "imageSrc": "https://i5.walmartimages.com/asr/bf7e47ae-9f51-4d60-a00e-2f17224485b2.6c42c49644419f63f9497f2f5ba6b29d.jpeg",
+                        "productType": "REGULAR",
+                        "canAddToCart": true,
+                        "productUrl": "/ip/Xbox-3-Month-Game-Pass-Ultimate-Microsoft-Digital-Download/309259942",
+                        "isShippingPassEligible": false,
+                        "isNextDayEligible": false,
+                        "isTwoDayShippingEligible": false,
+                        "brand": "Microsoft",
+                        "productName": "Xbox 3 Month Game Pass Ultimate, Microsoft, [Digital Download]",
+                        "quantity": 2147483553,
+                        "availabilityStatus": "AVAILABLE",
+                        "geoItemClassification": "NEVER_TWO_DAY"
+                    },
+                    {
+                        "id": {
+                            "usItemId": 171315679,
+                            "productId": "6UFWJE998R0N",
+                            "offerId": "BB9DA9785BA449B6AFC9117DD88BF353",
+                            "sellerId": 152
+                        },
+                        "price": {
+                            "fromPrice": null,
+                            "minPrice": null,
+                            "maxPrice": null,
+                            "currentPrice": 42,
+                            "comparisonPrice": null,
+                            "isStrikeThrough": true,
+                            "submapType": null,
+                            "ppu": {
+                                "unitValue": null,
+                                "uomType": "EA"
+                            }
+                        },
+                        "ratings": {
+                            "rating": "4.5",
+                            "totalRatings": "104"
+                        },
+                        "flags": {
+                            "isClearance": null,
+                            "isRollback": null,
+                            "isSpecialBuy": null,
+                            "isReducedPrice": null
+                        },
+                        "imageSrc": "https://i5.walmartimages.com/asr/8086024b-2e47-4bbd-9a2e-e58f75dfb15b.7c7c1c3c54410644371c5fcee3103452.jpeg",
+                        "productType": "REGULAR",
+                        "canAddToCart": true,
+                        "productUrl": "/ip/Assassin-s-Creed-Valhalla-Xbox-Series-X-S-Xbox-One-Standard-Edition/171315679",
+                        "isShippingPassEligible": false,
+                        "isNextDayEligible": false,
+                        "isTwoDayShippingEligible": false,
+                        "brand": "Ubisoft",
+                        "productName": "Assassin’s Creed Valhalla Xbox Series X|S, Xbox One Standard Edition",
+                        "quantity": 228,
+                        "availabilityStatus": "AVAILABLE",
+                        "geoItemClassification": "NETWORK_GEO"
+                    },
+                    {
+                        "id": {
+                            "usItemId": 727753868,
+                            "productId": "3T68W8S6QTB7",
+                            "offerId": "780C30628DE24B67A8B220DBC673D875",
+                            "sellerId": 0
+                        },
+                        "price": {
+                            "fromPrice": null,
+                            "minPrice": null,
+                            "maxPrice": null,
+                            "currentPrice": 59.94,
+                            "comparisonPrice": null,
+                            "isStrikeThrough": null,
+                            "submapType": null,
+                            "ppu": {
+                                "unitValue": 59.94,
+                                "uomType": "EA"
+                            }
+                        },
+                        "ratings": {
+                            "rating": "4.1",
+                            "totalRatings": "55"
+                        },
+                        "flags": {
+                            "isClearance": null,
+                            "isRollback": null,
+                            "isSpecialBuy": null,
+                            "isReducedPrice": null
+                        },
+                        "imageSrc": "https://i5.walmartimages.com/asr/7939c7a6-8e4e-4ff0-abb6-a6a139bd4160.fe3fbb75424addf850c509ab641d2011.jpeg",
+                        "productType": "REGULAR",
+                        "canAddToCart": true,
+                        "productUrl": "/ip/Call-of-Duty-Black-Ops-Cold-War-Activision-Xbox-Series-X/727753868",
+                        "isShippingPassEligible": false,
+                        "isNextDayEligible": false,
+                        "isTwoDayShippingEligible": false,
+                        "brand": "XBX Call of Duty Black Ops Cold War",
+                        "productName": "Call of Duty: Black Ops Cold War, Activision, Xbox Series X",
+                        "quantity": 5520,
+                        "availabilityStatus": "AVAILABLE",
+                        "geoItemClassification": "NETWORK_GEO"
+                    },
+                    {
+                        "id": {
+                            "usItemId": 552057007,
+                            "productId": "5HEJ25AY03MV",
+                            "offerId": "B00F9E2E93FA4E1580517D1215D1CD21",
+                            "sellerId": 0
+                        },
+                        "price": {
+                            "fromPrice": null,
+                            "minPrice": null,
+                            "maxPrice": null,
+                            "currentPrice": 36.63,
+                            "comparisonPrice": 59.99,
+                            "isStrikeThrough": null,
+                            "submapType": null,
+                            "ppu": {
+                                "unitValue": 36.63,
+                                "uomType": "EA"
+                            }
+                        },
+                        "ratings": {
+                            "rating": "4.3",
+                            "totalRatings": "32"
+                        },
+                        "flags": {
+                            "isClearance": null,
+                            "isRollback": true,
+                            "isSpecialBuy": null,
+                            "isReducedPrice": null
+                        },
+                        "imageSrc": "https://i5.walmartimages.com/asr/7ec3d2fd-3b73-4b15-8ae3-78c6c7254f82.c5d42dbb341bc7d8115f20130a0be645.jpeg",
+                        "productType": "REGULAR",
+                        "canAddToCart": true,
+                        "productUrl": "/ip/Watch-Dogs-Legion-Xbox-Series-X-S-Xbox-One-Standard-Edition/552057007",
+                        "isShippingPassEligible": false,
+                        "isNextDayEligible": false,
+                        "isTwoDayShippingEligible": false,
+                        "brand": "Ubisoft",
+                        "productName": "Watch Dogs: Legion Xbox Series X,S, Xbox One Standard Edition",
+                        "quantity": 1115,
+                        "availabilityStatus": "AVAILABLE",
+                        "geoItemClassification": "NETWORK_GEO"
+                    },
+                    {
+                        "id": {
+                            "usItemId": 909839536,
+                            "productId": "614SXTVAKCKJ",
+                            "offerId": "EADCE5F74CF94F0BA2C42111B2E4658F",
+                            "sellerId": 0
+                        },
+                        "price": {
+                            "fromPrice": null,
+                            "minPrice": null,
+                            "maxPrice": null,
+                            "currentPrice": 60.94,
+                            "comparisonPrice": null,
+                            "isStrikeThrough": null,
+                            "submapType": null,
+                            "ppu": {
+                                "unitValue": 60.94,
+                                "uomType": "EA"
+                            }
+                        },
+                        "ratings": {
+                            "rating": "3.8",
+                            "totalRatings": "17"
+                        },
+                        "flags": {
+                            "isClearance": null,
+                            "isRollback": null,
+                            "isSpecialBuy": null,
+                            "isReducedPrice": null
+                        },
+                        "imageSrc": "https://i5.walmartimages.com/asr/e49dc1db-d452-4e77-b348-f2d5b45f7119.5a0834de9942b707d29bba27a66a2ca0.png",
+                        "productType": "REGULAR",
+                        "canAddToCart": true,
+                        "productUrl": "/ip/NBA-2K21-2K-Xbox-Series-X-710425597145/909839536",
+                        "isShippingPassEligible": false,
+                        "isNextDayEligible": false,
+                        "isTwoDayShippingEligible": false,
+                        "brand": "2K",
+                        "productName": "NBA 2K21, 2K, Xbox Series X, 710425597145",
+                        "quantity": 2285,
+                        "availabilityStatus": "AVAILABLE",
+                        "geoItemClassification": "NETWORK_GEO"
+                    },
+                    {
+                        "id": {
+                            "usItemId": 231559337,
+                            "productId": "7L3M4T0ALF5S",
+                            "offerId": "F199F392221F4722B902CA9F202A3B8C",
+                            "sellerId": 0
+                        },
+                        "price": {
+                            "fromPrice": null,
+                            "minPrice": null,
+                            "maxPrice": null,
+                            "currentPrice": 59.88,
+                            "comparisonPrice": null,
+                            "isStrikeThrough": null,
+                            "submapType": null,
+                            "ppu": {
+                                "unitValue": 59.88,
+                                "uomType": "EA"
+                            }
+                        },
+                        "ratings": {
+                            "rating": "3.0",
+                            "totalRatings": "6"
+                        },
+                        "flags": {
+                            "isClearance": null,
+                            "isRollback": null,
+                            "isSpecialBuy": null,
+                            "isReducedPrice": null
+                        },
+                        "imageSrc": "https://i5.walmartimages.com/asr/0ed15c04-2c5b-4bb4-bab9-9f303cf4686d.ebf3920a99227a57e5a6c5724d202f58.jpeg",
+                        "productType": "REGULAR",
+                        "canAddToCart": true,
+                        "productUrl": "/ip/Far-Cry-6-Xbox-Series-X-S-Xbox-One-Standard-Edition-Pre-order-Bonus/231559337",
+                        "isShippingPassEligible": false,
+                        "isNextDayEligible": false,
+                        "isTwoDayShippingEligible": false,
+                        "brand": "Ubisoft",
+                        "productName": "Far Cry 6 Xbox Series X|S, Xbox One Standard Edition, Pre-order Bonus",
+                        "quantity": 3396,
+                        "availabilityStatus": "AVAILABLE",
+                        "geoItemClassification": "NETWORK_GEO"
+                    },
+                    {
+                        "id": {
+                            "usItemId": 780269283,
+                            "productId": "2GEAO2MR1TBC",
+                            "offerId": "C1ED256586E84C67BA4E94519EFA5548",
+                            "sellerId": 0
+                        },
+                        "price": {
+                            "fromPrice": null,
+                            "minPrice": null,
+                            "maxPrice": null,
+                            "currentPrice": 19.88,
+                            "comparisonPrice": 58.99,
+                            "isStrikeThrough": null,
+                            "submapType": null,
+                            "ppu": {
+                                "unitValue": 19.88,
+                                "uomType": "EA"
+                            }
+                        },
+                        "ratings": {
+                            "rating": "4.4",
+                            "totalRatings": "186"
+                        },
+                        "flags": {
+                            "isClearance": null,
+                            "isRollback": null,
+                            "isSpecialBuy": null,
+                            "isReducedPrice": null
+                        },
+                        "imageSrc": "https://i5.walmartimages.com/asr/3347baed-7cd0-401e-9d19-8740b8f7d48a.c8378fab0e3572848e91552e3c856f26.jpeg",
+                        "productType": "REGULAR",
+                        "canAddToCart": true,
+                        "productUrl": "/ip/Madden-NFL-21-Electronic-Arts-Xbox-One/780269283",
+                        "isShippingPassEligible": false,
+                        "isNextDayEligible": false,
+                        "isTwoDayShippingEligible": false,
+                        "brand": "Electronic Arts",
+                        "productName": "Madden NFL 21, Electronic Arts, Xbox One",
+                        "quantity": 3615,
+                        "availabilityStatus": "AVAILABLE",
+                        "geoItemClassification": "NETWORK_GEO"
+                    }
+                ]
+            },
+            "publishedDate": 1604994752478,
+            "moduleId": "108672eb-a6d0-4f3f-96de-d32fe449b9f4",
+            "module_id": "108672eb-a6d0-4f3f-96de-d32fe449b9f4",
+            "matchedTrigger": {
+                "pageType": "ItemPageByItem",
+                "pageId": "443574645",
+                "zone": "contentZoneMiddle1",
+                "inheritable": false,
+                "pageIdMap": null
+            }
+        },
+        {
+            "name": "Personalization Module 1 - Desktop Only",
+            "type": "PersonalizationModule",
+            "version": 1,
+            "status": "published",
+            "schedule": {
+                "start": null,
+                "end": null,
+                "priority": 10,
+                "expEnabled": false
+            },
+            "triggers": [
+                {
+                    "pageType": "ItemPageGlobal",
+                    "pageId": "global_evergreen",
+                    "zone": "contentZoneTop1",
+                    "inheritable": false,
+                    "pageIdMap": null
+                }
+            ],
+            "targeting": {
+                "deviceDisplay": [
+                    "desktopOnly"
+                ]
+            },
+            "configs": {
+                "DefaultItemCarousel": {
+                    "title": "Customers also considered",
+                    "tileOptions": {
+                        "uid": "JA5NVoTb",
+                        "ratingsReviews": "on",
+                        "deliveryPass": "on",
+                        "actions": "off",
+                        "itemFlag": "on",
+                        "productTitle": "double",
+                        "eroInfo": "off",
+                        "price": "on"
+                    },
+                    "themeColor": "#f2f8fd",
+                    "firstTile": null,
+                    "modelName": "vub",
+                    "viewAllLink": null,
+                    "key": "AthenaAtlasConfig",
+                    "products": [
+                        {
+                            "id": {
+                                "productId": "2XEV0XL8DUOP",
+                                "usItemId": "666492910",
+                                "offerId": "BEA7109E6EAD49F2B8DE1811681D01F6",
+                                "usSellerId": null
+                            },
+                            "price": {
+                                "comparisonPrice": null,
+                                "comparisonMinPrice": 1254.59,
+                                "submapType": null,
+                                "ppu": {
+                                    "uomType": "EA"
+                                },
+                                "fromPrice": null,
+                                "minPrice": 1019.99,
+                                "currentPrice": null,
+                                "isStrikeThrough": true,
+                                "maxPrice": 1019.99,
+                                "comparisonMaxPrice": null
+                            },
+                            "ratings": {
+                                "totalRatings": "85",
+                                "rating": "1.1"
+                            },
+                            "flags": {
+                                "isClearance": false,
+                                "isRollback": false,
+                                "isReducedPrice": true,
+                                "isSpecialBuy": false,
+                                "isNew": false
+                            },
+                            "imageSrc": "https://i5.walmartimages.com/asr/482137e8-5333-44d1-9295-8423141de9b5.33a253a7744af47ee096340a7587e594.jpeg",
+                            "productType": "BVSHELL",
+                            "canAddToCart": true,
+                            "productUrl": "/ip/2020-Newest-X-Gaming-Console-Bundle-1TB-SSD-Black-Xbox-with-Two-Xbox-Wireless-Controllers-Black-and-White/666492910?athcpid=666492910&athpgid=athenaItemPage&athcgid=null&athznid=PWVUB&athieid=v0&athstid=CS004&athguid=739516f7-007-178b2fb55f2573&athancid=null&athena=true",
+                            "quantity": 19920,
+                            "availabilityStatus": "AVAILABLE",
+                            "productName": "2020 Newest X Gaming Console Bundle - 1TB SSD Black Xbox with Two Xbox Wireless Controllers Black and White",
+                            "category": "Shop by Brand",
+                            "brand": "Microsoft",
+                            "geoItemClassification": "NETWORK_GEO",
+                            "alternateShelves": [
+                                "2312432"
+                            ],
+                            "hasVirtualPack": false,
+                            "enableSponsoredProductTag": false,
+                            "isTwoDayShippingEligible": false,
+                            "isNextDayEligible": false
+                        },
+                        {
+                            "id": {
+                                "productId": "1TTML0AZAVX8",
+                                "usItemId": "604685632",
+                                "offerId": "8D934FD85A204787A408B21DA37A612A",
+                                "usSellerId": null
+                            },
+                            "price": {
+                                "comparisonPrice": null,
+                                "comparisonMinPrice": null,
+                                "submapType": null,
+                                "ppu": {
+                                    "uomType": "EA"
+                                },
+                                "fromPrice": null,
+                                "minPrice": null,
+                                "currentPrice": 599.99,
+                                "isStrikeThrough": false,
+                                "maxPrice": null,
+                                "comparisonMaxPrice": null
+                            },
+                            "ratings": {
+                                "totalRatings": "48",
+                                "rating": "3.5"
+                            },
+                            "flags": {
+                                "isClearance": false,
+                                "isRollback": false,
+                                "isReducedPrice": false,
+                                "isSpecialBuy": false,
+                                "isNew": false
+                            },
+                            "imageSrc": "https://i5.walmartimages.com/asr/b0717d07-7b91-42fd-8f42-e35df8b8021c_1.57724fdd930014623a73a0917a5477d4.jpeg",
+                            "productType": "REGULAR",
+                            "canAddToCart": true,
+                            "productUrl": "/ip/Microsoft-Xbox-One-S-1TB-All-Digital-Edition-Console-with-Xbox-One-Wireless-Controller-Renewed/604685632?athcpid=604685632&athpgid=athenaItemPage&athcgid=null&athznid=PWVUB&athieid=v0&athstid=CS004&athguid=739516f7-007-178b2fb55f2573&athancid=null&athena=true",
+                            "quantity": 1,
+                            "availabilityStatus": "AVAILABLE",
+                            "productName": "Microsoft - Xbox One S 1TB All-Digital Edition Console with Xbox One Wireless Controller (Renewed)",
+                            "category": "Video Games",
+                            "brand": "Microsoft",
+                            "alternateShelves": [
+                                "3399301"
+                            ],
+                            "hasVirtualPack": false,
+                            "enableSponsoredProductTag": false,
+                            "isTwoDayShippingEligible": false,
+                            "isNextDayEligible": false
+                        },
+                        {
+                            "id": {
+                                "productId": "3CFFTZYSVLW8",
+                                "usItemId": "265882360",
+                                "offerId": "0F377AEAE93540EAB280D0A949CDC3D1",
+                                "usSellerId": null
+                            },
+                            "price": {
+                                "comparisonPrice": null,
+                                "comparisonMinPrice": null,
+                                "submapType": null,
+                                "ppu": {
+                                    "uomType": "EA",
+                                    "unitPriceDisplayCondition": "($54.99/cu ft)"
+                                },
+                                "fromPrice": null,
+                                "minPrice": null,
+                                "currentPrice": 67.99,
+                                "isStrikeThrough": true,
+                                "maxPrice": null,
+                                "comparisonMaxPrice": null
+                            },
+                            "ratings": {
+                                "totalRatings": "178",
+                                "rating": "4.4"
+                            },
+                            "flags": {
+                                "isClearance": false,
+                                "isRollback": false,
+                                "isReducedPrice": false,
+                                "isSpecialBuy": false,
+                                "isNew": false
+                            },
+                            "imageSrc": "https://i5.walmartimages.com/asr/72255485-58c1-424a-b271-bfcdc621fcce.b7d77db2354db33e1fe2a506f5fb133f.jpeg",
+                            "productType": "REGULAR",
+                            "canAddToCart": true,
+                            "productUrl": "/ip/Xbox-Wireless-Controller-Shock-Blue/265882360?athcpid=265882360&athpgid=athenaItemPage&athcgid=null&athznid=PWVUB&athieid=v0&athstid=CS004&athguid=739516f7-007-178b2fb55f2573&athancid=null&athena=true",
+                            "quantity": 294,
+                            "availabilityStatus": "AVAILABLE",
+                            "productName": "Xbox Wireless Controller – Shock Blue",
+                            "category": "Shop by Brand",
+                            "maxOrderQuantity": 5,
+                            "brand": "Microsoft",
+                            "geoItemClassification": "NETWORK_GEO",
+                            "alternateShelves": [
+                                "2312432"
+                            ],
+                            "hasVirtualPack": false,
+                            "enableSponsoredProductTag": false,
+                            "isTwoDayShippingEligible": false,
+                            "isNextDayEligible": false
+                        },
+                        {
+                            "id": {
+                                "productId": "5TWDRRY66CF7",
+                                "usItemId": "752722058",
+                                "offerId": "F881F3106F4740BEBCA43BB2C96529B1",
+                                "usSellerId": null
+                            },
+                            "price": {
+                                "comparisonPrice": null,
+                                "comparisonMinPrice": null,
+                                "submapType": null,
+                                "ppu": {
+                                    "uomType": "EA"
+                                },
+                                "fromPrice": null,
+                                "minPrice": 59.99,
+                                "currentPrice": null,
+                                "isStrikeThrough": true,
+                                "maxPrice": 59.99,
+                                "comparisonMaxPrice": null
+                            },
+                            "ratings": {
+                                "totalRatings": "75",
+                                "rating": "4.0"
+                            },
+                            "flags": {
+                                "isClearance": false,
+                                "isRollback": false,
+                                "isReducedPrice": false,
+                                "isSpecialBuy": false,
+                                "isNew": false
+                            },
+                            "imageSrc": "https://i5.walmartimages.com/asr/fdc1de73-6a9d-4c04-b05f-d10bb7eef3ad.a4c540ea7696f71034b7a2e09aa59f66.jpeg",
+                            "productType": "BVSHELL",
+                            "canAddToCart": true,
+                            "productUrl": "/ip/Xbox-Wireless-Controller-Carbon-Black/752722058?athcpid=752722058&athpgid=athenaItemPage&athcgid=null&athznid=PWVUB&athieid=v0&athstid=CS004&athguid=739516f7-007-178b2fb55f2573&athancid=null&athena=true",
+                            "quantity": 1192,
+                            "availabilityStatus": "AVAILABLE",
+                            "productName": "Xbox Wireless Controller – Carbon Black",
+                            "category": "Shop by Brand",
+                            "brand": "Microsoft",
+                            "geoItemClassification": "NETWORK_GEO",
+                            "alternateShelves": [
+                                "2312432"
+                            ],
+                            "hasVirtualPack": false,
+                            "enableSponsoredProductTag": false,
+                            "isTwoDayShippingEligible": false,
+                            "isNextDayEligible": false
+                        },
+                        {
+                            "id": {
+                                "productId": "3T68W8S6QTB7",
+                                "usItemId": "727753868",
+                                "offerId": "780C30628DE24B67A8B220DBC673D875",
+                                "usSellerId": null
+                            },
+                            "price": {
+                                "comparisonPrice": null,
+                                "comparisonMinPrice": null,
+                                "submapType": null,
+                                "ppu": {
+                                    "unitValue": 59.94,
+                                    "uomType": "EA"
+                                },
+                                "fromPrice": null,
+                                "minPrice": null,
+                                "currentPrice": 59.94,
+                                "isStrikeThrough": false,
+                                "maxPrice": null,
+                                "comparisonMaxPrice": null
+                            },
+                            "ratings": {
+                                "totalRatings": "55",
+                                "rating": "4.1"
+                            },
+                            "flags": {
+                                "isClearance": false,
+                                "isRollback": false,
+                                "isReducedPrice": false,
+                                "isSpecialBuy": false,
+                                "isNew": false
+                            },
+                            "imageSrc": "https://i5.walmartimages.com/asr/7939c7a6-8e4e-4ff0-abb6-a6a139bd4160.fe3fbb75424addf850c509ab641d2011.jpeg",
+                            "productType": "REGULAR",
+                            "canAddToCart": true,
+                            "productUrl": "/ip/Call-of-Duty-Black-Ops-Cold-War-Activision-Xbox-Series-X/727753868?athcpid=727753868&athpgid=athenaItemPage&athcgid=null&athznid=PWVUB&athieid=v0&athstid=CS004&athguid=739516f7-007-178b2fb55f2573&athancid=null&athena=true",
+                            "quantity": 5520,
+                            "availabilityStatus": "AVAILABLE",
+                            "productName": "Call of Duty: Black Ops Cold War, Activision, Xbox Series X",
+                            "category": "Video Games",
+                            "maxOrderQuantity": 2,
+                            "brand": "XBX Call of Duty Black Ops Cold War",
+                            "geoItemClassification": "NETWORK_GEO",
+                            "alternateShelves": [
+                                "1086005"
+                            ],
+                            "hasVirtualPack": false,
+                            "enableSponsoredProductTag": false,
+                            "isTwoDayShippingEligible": false,
+                            "isNextDayEligible": false
+                        },
+                        {
+                            "id": {
+                                "productId": "68XOPED6JZ3D",
+                                "usItemId": "938320677",
+                                "offerId": "73CA1058D8E849D1A4458210CED5C09D",
+                                "usSellerId": null
+                            },
+                            "price": {
+                                "comparisonPrice": null,
+                                "comparisonMinPrice": null,
+                                "submapType": null,
+                                "ppu": {
+                                    "uomType": "EA"
+                                },
+                                "fromPrice": null,
+                                "minPrice": null,
+                                "currentPrice": 480,
+                                "isStrikeThrough": false,
+                                "maxPrice": null,
+                                "comparisonMaxPrice": null
+                            },
+                            "ratings": {
+                                "totalRatings": "3",
+                                "rating": "3.7"
+                            },
+                            "flags": {
+                                "isClearance": false,
+                                "isRollback": false,
+                                "isReducedPrice": false,
+                                "isSpecialBuy": false,
+                                "isNew": false
+                            },
+                            "imageSrc": "https://i5.walmartimages.com/asr/b24ff634-2a7c-4ef1-b394-692ef6ae00c7.9442e6c9b852736659457370fd5dca8b.jpeg",
+                            "productType": "REGULAR",
+                            "canAddToCart": true,
+                            "productUrl": "/ip/Nintendo-Switch-Fortnite-Special-Edition-Console/938320677?athcpid=938320677&athpgid=athenaItemPage&athcgid=null&athznid=PWVUB&athieid=v0&athstid=CS004&athguid=739516f7-007-178b2fb55f2573&athancid=null&athena=true",
+                            "quantity": 42,
+                            "availabilityStatus": "AVAILABLE",
+                            "productName": "Nintendo Switch Fortnite Special Edition Console",
+                            "category": "Electronics",
+                            "brand": "Nintendo",
+                            "geoItemClassification": "NETWORK_GEO",
+                            "alternateShelves": [
+                                "9724811"
+                            ],
+                            "hasVirtualPack": false,
+                            "enableSponsoredProductTag": false,
+                            "isTwoDayShippingEligible": false,
+                            "isNextDayEligible": false
+                        },
+                        {
+                            "id": {
+                                "productId": "145ZGPP65VV4",
+                                "usItemId": "696563828",
+                                "offerId": "F9A23D4F95DF4B07851903C3CE599756",
+                                "usSellerId": null
+                            },
+                            "price": {
+                                "comparisonPrice": null,
+                                "comparisonMinPrice": null,
+                                "submapType": null,
+                                "ppu": {
+                                    "unitValue": 49.99,
+                                    "uomType": "EA"
+                                },
+                                "fromPrice": null,
+                                "minPrice": null,
+                                "currentPrice": 49.99,
+                                "isStrikeThrough": false,
+                                "maxPrice": null,
+                                "comparisonMaxPrice": null
+                            },
+                            "ratings": {
+                                "totalRatings": null,
+                                "rating": null
+                            },
+                            "flags": {
+                                "isClearance": false,
+                                "isRollback": false,
+                                "isReducedPrice": false,
+                                "isSpecialBuy": false,
+                                "isNew": false
+                            },
+                            "imageSrc": "https://i5.walmartimages.com/asr/f33eeed3-39cd-410d-ba7d-af577a0de105_1.087af6ad5a3385abec9a2bcad9be3b06.png",
+                            "productType": "REGULAR",
+                            "canAddToCart": true,
+                            "productUrl": "/ip/ROBLOX-4-500-Robux-for-Xbox-ID-Xbox-Xbox-Digital-Download/696563828?athcpid=696563828&athpgid=athenaItemPage&athcgid=null&athznid=PWVUB&athieid=v0&athstid=CS004&athguid=739516f7-007-178b2fb55f2573&athancid=null&athena=true",
+                            "quantity": 999831,
+                            "availabilityStatus": "AVAILABLE",
+                            "productName": "ROBLOX: 4,500 Robux for Xbox, ID@Xbox, Xbox [Digital Download]",
+                            "category": "Shop by Video Game",
+                            "maxOrderQuantity": 2,
+                            "brand": "ONLINE",
+                            "geoItemClassification": "NEVER_TWO_DAY",
+                            "alternateShelves": [
+                                "1224996"
+                            ],
+                            "hasVirtualPack": false,
+                            "enableSponsoredProductTag": false,
+                            "isTwoDayShippingEligible": false,
+                            "isNextDayEligible": false
+                        }
+                    ]
+                }
+            },
+            "publishedDate": 1516755229601,
+            "moduleId": "6d2dd5de-792a-458a-9151-49dcb557b8e9",
+            "module_id": "6d2dd5de-792a-458a-9151-49dcb557b8e9",
+            "matchedTrigger": {
+                "pageType": "ItemPageGlobal",
+                "pageId": "global_evergreen",
+                "zone": "contentZoneTop1",
+                "inheritable": false,
+                "pageIdMap": null
+            }
+        },
+        {
+            "name": "Personalization Module 2",
+            "type": "PersonalizationModule",
+            "version": 3,
+            "status": "published",
+            "schedule": {
+                "start": null,
+                "end": null,
+                "priority": 10,
+                "expEnabled": false
+            },
+            "triggers": [
+                {
+                    "pageType": "ItemPageGlobal",
+                    "pageId": "global_evergreen",
+                    "zone": "contentZoneMiddle2",
+                    "inheritable": false,
+                    "pageIdMap": null
+                }
+            ],
+            "targeting": {},
+            "configs": {
+                "DefaultItemCarousel": {
+                    "title": "Customers also bought these products",
+                    "tileOptions": {
+                        "uid": "JA5NVoTb",
+                        "ratingsReviews": "on",
+                        "deliveryPass": "on",
+                        "actions": "off",
+                        "itemFlag": "on",
+                        "productTitle": "double",
+                        "eroInfo": "off",
+                        "price": "on"
+                    },
+                    "themeColor": "#f2f8fd",
+                    "firstTile": null,
+                    "modelName": "bab",
+                    "viewAllLink": null,
+                    "key": "AthenaAtlasConfig",
+                    "products": [
+                        {
+                            "id": {
+                                "productId": "2SHXKFO27IHF",
+                                "usItemId": "973645137",
+                                "offerId": "7EAC9CAC6F1A4DFF9691FB43851C61FB",
+                                "usSellerId": null
+                            },
+                            "price": {
+                                "comparisonPrice": 49.94,
+                                "comparisonMinPrice": null,
+                                "submapType": null,
+                                "ppu": {
+                                    "uomType": "EA"
+                                },
+                                "fromPrice": null,
+                                "minPrice": null,
+                                "currentPrice": 33.99,
+                                "isStrikeThrough": false,
+                                "maxPrice": null,
+                                "comparisonMaxPrice": null
+                            },
+                            "ratings": {
+                                "totalRatings": "87",
+                                "rating": "3.8"
+                            },
+                            "flags": {
+                                "isClearance": false,
+                                "isRollback": true,
+                                "isReducedPrice": false,
+                                "isSpecialBuy": false,
+                                "isNew": false
+                            },
+                            "imageSrc": "https://i5.walmartimages.com/asr/cdf9cb0a-76cb-4f9c-bd2e-93f850ccb2eb.9c95b21326dee77636c1ca00fe6ad74a.jpeg",
+                            "productType": "REGULAR",
+                            "canAddToCart": true,
+                            "productUrl": "/ip/Cyberpunk-2077-Warner-Bros-Xbox-One/973645137?athcpid=973645137&athpgid=athenaItemPage&athcgid=null&athznid=PWBAB&athieid=v0&athstid=CS020&athguid=739516f7-007-178b2fb55f2573&athancid=null&athena=true",
+                            "quantity": 3208,
+                            "availabilityStatus": "AVAILABLE",
+                            "productName": "Cyberpunk 2077, Warner Bros, Xbox One",
+                            "category": "Video Games",
+                            "maxOrderQuantity": 2,
+                            "brand": "Cyberpunk",
+                            "geoItemClassification": "NETWORK_GEO",
+                            "alternateShelves": [
+                                "7875410",
+                                "1224996"
+                            ],
+                            "hasVirtualPack": false,
+                            "enableSponsoredProductTag": false,
+                            "isTwoDayShippingEligible": false,
+                            "isNextDayEligible": false
+                        },
+                        {
+                            "id": {
+                                "productId": "2AY9P0Z8R7DT",
+                                "usItemId": "949146211",
+                                "offerId": "41F142F1E2814E2B890E315E9408C696",
+                                "usSellerId": null
+                            },
+                            "price": {
+                                "comparisonPrice": null,
+                                "comparisonMinPrice": null,
+                                "submapType": null,
+                                "ppu": {
+                                    "unitValue": 399,
+                                    "uomType": "EA",
+                                    "unitPriceDisplayCondition": "($399.00/cu ft)"
+                                },
+                                "fromPrice": null,
+                                "minPrice": null,
+                                "currentPrice": 399,
+                                "isStrikeThrough": false,
+                                "maxPrice": null,
+                                "comparisonMaxPrice": null
+                            },
+                            "ratings": {
+                                "totalRatings": "4666",
+                                "rating": "4.5"
+                            },
+                            "flags": {
+                                "isClearance": false,
+                                "isRollback": false,
+                                "isReducedPrice": false,
+                                "isSpecialBuy": false,
+                                "isNew": false
+                            },
+                            "imageSrc": "https://i5.walmartimages.com/asr/edb61f3f-138b-4c25-b222-337e3aef0765.eb6417112369cbcc319963cf2074dddc.jpeg",
+                            "productType": "VARIANT",
+                            "canAddToCart": true,
+                            "productUrl": "/ip/Oculus-Quest-2-Advanced-All-In-One-Virtual-Reality-Headset-256-GB/949146211?athcpid=949146211&athpgid=athenaItemPage&athcgid=null&athznid=PWBAB&athieid=v0&athstid=CS020&athguid=739516f7-007-178b2fb55f2573&athancid=null&athena=true",
+                            "quantity": 185,
+                            "availabilityStatus": "AVAILABLE",
+                            "productName": "Oculus Quest 2- Advanced All-In-One Virtual Reality Headset, 256 GB",
+                            "category": "Video Games",
+                            "maxOrderQuantity": 2,
+                            "brand": "Oculus",
+                            "geoItemClassification": "NETWORK_GEO",
+                            "alternateShelves": [
+                                "1841086"
+                            ],
+                            "hasVirtualPack": false,
+                            "enableSponsoredProductTag": false,
+                            "isTwoDayShippingEligible": false,
+                            "isNextDayEligible": false
+                        },
+                        {
+                            "id": {
+                                "productId": "7L3M4T0ALF5S",
+                                "usItemId": "231559337",
+                                "offerId": "F199F392221F4722B902CA9F202A3B8C",
+                                "usSellerId": null
+                            },
+                            "price": {
+                                "comparisonPrice": null,
+                                "comparisonMinPrice": null,
+                                "submapType": null,
+                                "ppu": {
+                                    "unitValue": 59.88,
+                                    "uomType": "EA"
+                                },
+                                "fromPrice": null,
+                                "minPrice": null,
+                                "currentPrice": 59.88,
+                                "isStrikeThrough": false,
+                                "maxPrice": null,
+                                "comparisonMaxPrice": null
+                            },
+                            "ratings": {
+                                "totalRatings": "6",
+                                "rating": "3.0"
+                            },
+                            "flags": {
+                                "isClearance": false,
+                                "isRollback": false,
+                                "isReducedPrice": false,
+                                "isSpecialBuy": false,
+                                "isNew": false
+                            },
+                            "imageSrc": "https://i5.walmartimages.com/asr/0ed15c04-2c5b-4bb4-bab9-9f303cf4686d.ebf3920a99227a57e5a6c5724d202f58.jpeg",
+                            "productType": "REGULAR",
+                            "canAddToCart": true,
+                            "productUrl": "/ip/Far-Cry-6-Xbox-Series-X-S-Xbox-One-Standard-Edition-Pre-order-Bonus/231559337?athcpid=231559337&athpgid=athenaItemPage&athcgid=null&athznid=PWBAB&athieid=v0&athstid=CS020&athguid=739516f7-007-178b2fb55f2573&athancid=null&athena=true",
+                            "quantity": 3396,
+                            "availabilityStatus": "AVAILABLE",
+                            "productName": "Far Cry 6 Xbox Series X|S, Xbox One Standard Edition, Pre-order Bonus",
+                            "category": "Video Games",
+                            "maxOrderQuantity": 2,
+                            "brand": "Ubisoft",
+                            "geoItemClassification": "NETWORK_GEO",
+                            "alternateShelves": [
+                                "1224996"
+                            ],
+                            "hasVirtualPack": false,
+                            "enableSponsoredProductTag": false,
+                            "isTwoDayShippingEligible": false,
+                            "isNextDayEligible": false
+                        },
+                        {
+                            "id": {
+                                "productId": "0U5K9P0WL0OW",
+                                "usItemId": "827916692",
+                                "offerId": "296A5C0EA9474462AF650A634B5A168D",
+                                "usSellerId": null
+                            },
+                            "price": {
+                                "comparisonPrice": null,
+                                "comparisonMinPrice": null,
+                                "submapType": null,
+                                "ppu": {
+                                    "unitValue": 24.84,
+                                    "uomType": "EA"
+                                },
+                                "fromPrice": null,
+                                "minPrice": null,
+                                "currentPrice": 24.84,
+                                "isStrikeThrough": false,
+                                "maxPrice": null,
+                                "comparisonMaxPrice": null
+                            },
+                            "ratings": {
+                                "totalRatings": "19",
+                                "rating": "4.3"
+                            },
+                            "flags": {
+                                "isClearance": false,
+                                "isRollback": false,
+                                "isReducedPrice": false,
+                                "isSpecialBuy": false,
+                                "isNew": false
+                            },
+                            "imageSrc": "https://i5.walmartimages.com/asr/aed229c4-1812-4d92-ba5c-d537094b77cc.77a2c45b001d59bbe93ba19e1b1c2acd.jpeg",
+                            "productType": "REGULAR",
+                            "canAddToCart": true,
+                            "productUrl": "/ip/PowerA-Dual-Charging-Station-for-Xbox-Series-X-S-White/827916692?athcpid=827916692&athpgid=athenaItemPage&athcgid=null&athznid=PWBAB&athieid=v0&athstid=CS020&athguid=739516f7-007-178b2fb55f2573&athancid=null&athena=true",
+                            "quantity": 292,
+                            "availabilityStatus": "AVAILABLE",
+                            "productName": "PowerA Dual Charging Station for Xbox Series X|S - White",
+                            "category": "Video Games",
+                            "brand": "PowerA",
+                            "geoItemClassification": "NETWORK_GEO",
+                            "alternateShelves": [
+                                "1074164"
+                            ],
+                            "hasVirtualPack": false,
+                            "enableSponsoredProductTag": false,
+                            "isTwoDayShippingEligible": false,
+                            "isNextDayEligible": false
+                        },
+                        {
+                            "id": {
+                                "productId": "1V0HST8PBS7S",
+                                "usItemId": "962738159",
+                                "offerId": "6E386A47FFCF4F0EA2AC4F8C86F1EEF7",
+                                "usSellerId": null
+                            },
+                            "price": {
+                                "comparisonPrice": null,
+                                "comparisonMinPrice": null,
+                                "submapType": null,
+                                "ppu": {
+                                    "unitValue": 219.99,
+                                    "uomType": "EA",
+                                    "unitPriceDisplayCondition": "($219.97/cu ft)"
+                                },
+                                "fromPrice": null,
+                                "minPrice": null,
+                                "currentPrice": 219.99,
+                                "isStrikeThrough": false,
+                                "maxPrice": null,
+                                "comparisonMaxPrice": null
+                            },
+                            "ratings": {
+                                "totalRatings": "48",
+                                "rating": "4.4"
+                            },
+                            "flags": {
+                                "isClearance": false,
+                                "isRollback": false,
+                                "isReducedPrice": false,
+                                "isSpecialBuy": false,
+                                "isNew": false
+                            },
+                            "imageSrc": "https://i5.walmartimages.com/asr/24121312-e102-44d7-8037-b94a910f69d7.9abe0b29297e26315a8aa409973493ad.png",
+                            "productType": "REGULAR",
+                            "canAddToCart": true,
+                            "productUrl": "/ip/Seagate-Storage-Expansion-Card-for-Xbox-Series-X-S-1TB-Solid-State-Drive-NVMe-Expansion-SSD-for-Xbox-Series-X-S-STJR1000400/962738159?athcpid=962738159&athpgid=athenaItemPage&athcgid=null&athznid=PWBAB&athieid=v0&athstid=CS020&athguid=739516f7-007-178b2fb55f2573&athancid=null&athena=true",
+                            "quantity": 55,
+                            "availabilityStatus": "AVAILABLE",
+                            "productName": "Seagate Storage Expansion Card for Xbox Series X|S 1TB Solid State Drive - NVMe Expansion SSD for Xbox Series X|S (STJR1000400)",
+                            "category": "Video Games",
+                            "brand": "Seagate",
+                            "geoItemClassification": "NETWORK_GEO",
+                            "alternateShelves": [
+                                "514537"
+                            ],
+                            "hasVirtualPack": false,
+                            "enableSponsoredProductTag": false,
+                            "isTwoDayShippingEligible": true,
+                            "isNextDayEligible": false
+                        },
+                        {
+                            "id": {
+                                "productId": "4517PAXQZLYU",
+                                "usItemId": "501295622",
+                                "offerId": "CE19BC6C11A04307A55365F19B82D7AC",
+                                "usSellerId": null
+                            },
+                            "price": {
+                                "comparisonPrice": 99.99,
+                                "comparisonMinPrice": null,
+                                "submapType": null,
+                                "ppu": {
+                                    "uomType": "EA"
+                                },
+                                "fromPrice": null,
+                                "minPrice": null,
+                                "currentPrice": 59.99,
+                                "isStrikeThrough": false,
+                                "maxPrice": null,
+                                "comparisonMaxPrice": null
+                            },
+                            "ratings": {
+                                "totalRatings": "10",
+                                "rating": "3.2"
+                            },
+                            "flags": {
+                                "isClearance": false,
+                                "isRollback": false,
+                                "isReducedPrice": false,
+                                "isSpecialBuy": false,
+                                "isNew": false
+                            },
+                            "imageSrc": "https://i5.walmartimages.com/asr/5178f68f-e2ef-4ca1-ac6e-d9200f5c81fd.66b49d1e9b3486128d7326b7f5741472.png",
+                            "productType": "REGULAR",
+                            "canAddToCart": true,
+                            "productUrl": "/ip/Madden-NFL-21-MVP-Edition-Electronic-Arts-Xbox-One-Xbox-Series-X/501295622?athcpid=501295622&athpgid=athenaItemPage&athcgid=null&athznid=PWBAB&athieid=v0&athstid=CS020&athguid=739516f7-007-178b2fb55f2573&athancid=null&athena=true",
+                            "quantity": 33,
+                            "availabilityStatus": "AVAILABLE",
+                            "productName": "Madden NFL 21 MVP Edition, Electronic Arts, Xbox One & Xbox Series X",
+                            "category": "Video Games",
+                            "maxOrderQuantity": 2,
+                            "brand": "Electronic Arts",
+                            "geoItemClassification": "NETWORK_GEO",
+                            "alternateShelves": [
+                                "1358086",
+                                "1224996"
+                            ],
+                            "hasVirtualPack": false,
+                            "enableSponsoredProductTag": false,
+                            "isTwoDayShippingEligible": false,
+                            "isNextDayEligible": false
+                        },
+                        {
+                            "id": {
+                                "productId": "2MCKY9A3VF4G",
+                                "usItemId": "623809745",
+                                "offerId": "7B462FA6931548FAA5AC2216B644AC87",
+                                "usSellerId": null
+                            },
+                            "price": {
+                                "comparisonPrice": null,
+                                "comparisonMinPrice": null,
+                                "submapType": null,
+                                "ppu": {
+                                    "uomType": "EA"
+                                },
+                                "fromPrice": null,
+                                "minPrice": null,
+                                "currentPrice": 48.71,
+                                "isStrikeThrough": true,
+                                "maxPrice": null,
+                                "comparisonMaxPrice": null
+                            },
+                            "ratings": {
+                                "totalRatings": "8",
+                                "rating": "4.5"
+                            },
+                            "flags": {
+                                "isClearance": false,
+                                "isRollback": false,
+                                "isReducedPrice": false,
+                                "isSpecialBuy": false,
+                                "isNew": false
+                            },
+                            "imageSrc": "https://i5.walmartimages.com/asr/5a9b647c-45a0-4f98-9f33-84c546afd977.a55d22607f677a7e417dd8fafd1159d4.jpeg",
+                            "productType": "REGULAR",
+                            "canAddToCart": true,
+                            "productUrl": "/ip/Immortals-Fenyx-Rising-Xbox-Series-X-S-Xbox-One-Standard-Edition/623809745?athcpid=623809745&athpgid=athenaItemPage&athcgid=null&athznid=PWBAB&athieid=v0&athstid=CS020&athguid=739516f7-007-178b2fb55f2573&athancid=null&athena=true",
+                            "quantity": 710,
+                            "availabilityStatus": "AVAILABLE",
+                            "productName": "Immortals Fenyx Rising Xbox Series X|S, Xbox One Standard Edition",
+                            "category": "Video Games",
+                            "brand": "Ubisoft",
+                            "alternateShelves": [
+                                "7875410",
+                                "1224996"
+                            ],
+                            "hasVirtualPack": false,
+                            "enableSponsoredProductTag": false,
+                            "isTwoDayShippingEligible": false,
+                            "isNextDayEligible": false
+                        },
+                        {
+                            "id": {
+                                "productId": "4GQZOHY8MA8N",
+                                "usItemId": "338104072",
+                                "offerId": "F891A888EB444839BA827EC4E1D49F02",
+                                "usSellerId": null
+                            },
+                            "price": {
+                                "comparisonPrice": null,
+                                "comparisonMinPrice": null,
+                                "submapType": null,
+                                "ppu": {
+                                    "unitValue": 14.99,
+                                    "uomType": "EA"
+                                },
+                                "fromPrice": null,
+                                "minPrice": null,
+                                "currentPrice": 14.99,
+                                "isStrikeThrough": false,
+                                "maxPrice": null,
+                                "comparisonMaxPrice": null
+                            },
+                            "ratings": {
+                                "totalRatings": "77",
+                                "rating": "4.1"
+                            },
+                            "flags": {
+                                "isClearance": false,
+                                "isRollback": false,
+                                "isReducedPrice": false,
+                                "isSpecialBuy": false,
+                                "isNew": false
+                            },
+                            "imageSrc": "https://i5.walmartimages.com/asr/1dc9480e-b5f6-4c44-8bee-56c4051cd44e.6f243bf24c814066b119b0fee61ad391.jpeg",
+                            "productType": "REGULAR",
+                            "canAddToCart": true,
+                            "productUrl": "/ip/Xbox-1-Month-Game-Pass-Ultimate-Microsoft-Xbox-Digital-Download/338104072?athcpid=338104072&athpgid=athenaItemPage&athcgid=null&athznid=PWBAB&athieid=v0&athstid=CS020&athguid=739516f7-007-178b2fb55f2573&athancid=null&athena=true",
+                            "quantity": 2147483643,
+                            "availabilityStatus": "AVAILABLE",
+                            "productName": "Xbox 1 Month Game Pass Ultimate, Microsoft, Xbox [Digital Download]",
+                            "category": "Video Games",
+                            "maxOrderQuantity": 2,
+                            "brand": "Microsoft",
+                            "geoItemClassification": "NEVER_TWO_DAY",
+                            "alternateShelves": [
+                                "1224996"
+                            ],
+                            "hasVirtualPack": false,
+                            "enableSponsoredProductTag": false,
+                            "isTwoDayShippingEligible": false,
+                            "isNextDayEligible": false
+                        },
+                        {
+                            "id": {
+                                "productId": "0XGVXL9OPVC7",
+                                "usItemId": "309259942",
+                                "offerId": null,
+                                "usSellerId": null
+                            },
+                            "price": {
+                                "comparisonPrice": null,
+                                "comparisonMinPrice": null,
+                                "submapType": null,
+                                "ppu": {
+                                    "unitValue": 44.88,
+                                    "uomType": "EA"
+                                },
+                                "fromPrice": null,
+                                "minPrice": null,
+                                "currentPrice": 44.88,
+                                "isStrikeThrough": false,
+                                "maxPrice": null,
+                                "comparisonMaxPrice": null
+                            },
+                            "ratings": {
+                                "totalRatings": "224",
+                                "rating": "4.2"
+                            },
+                            "flags": {
+                                "isClearance": false,
+                                "isRollback": false,
+                                "isReducedPrice": false,
+                                "isSpecialBuy": false,
+                                "isNew": false
+                            },
+                            "imageSrc": "https://i5.walmartimages.com/asr/bf7e47ae-9f51-4d60-a00e-2f17224485b2.6c42c49644419f63f9497f2f5ba6b29d.jpeg",
+                            "productType": "REGULAR",
+                            "canAddToCart": true,
+                            "productUrl": "/ip/Xbox-3-Month-Game-Pass-Ultimate-Microsoft-Digital-Download/309259942?athcpid=309259942&athpgid=athenaItemPage&athcgid=null&athznid=PWBAB&athieid=v0&athstid=CS020&athguid=739516f7-007-178b2fb55f2573&athancid=null&athena=true",
+                            "quantity": 2147483553,
+                            "availabilityStatus": "AVAILABLE",
+                            "productName": "Xbox 3 Month Game Pass Ultimate, Microsoft, [Digital Download]",
+                            "category": "Gifts & Registry",
+                            "maxOrderQuantity": 2,
+                            "brand": "Microsoft",
+                            "geoItemClassification": "NEVER_TWO_DAY",
+                            "alternateShelves": [
+                                "1224996"
+                            ],
+                            "hasVirtualPack": false,
+                            "enableSponsoredProductTag": false,
+                            "hideAddToCart": true,
+                            "isTwoDayShippingEligible": false,
+                            "isNextDayEligible": false
+                        },
+                        {
+                            "id": {
+                                "productId": "73GZLLUI2BDV",
+                                "usItemId": "176630812",
+                                "offerId": "CFA61EEE8ADD43DFA2B69C23F9F712D6",
+                                "usSellerId": null
+                            },
+                            "price": {
+                                "comparisonPrice": null,
+                                "comparisonMinPrice": null,
+                                "submapType": null,
+                                "ppu": {
+                                    "unitValue": 59.94,
+                                    "uomType": "EA",
+                                    "unitPriceDisplayCondition": "($59.94/cu ft)"
+                                },
+                                "fromPrice": null,
+                                "minPrice": null,
+                                "currentPrice": 59.94,
+                                "isStrikeThrough": false,
+                                "maxPrice": null,
+                                "comparisonMaxPrice": null
+                            },
+                            "ratings": {
+                                "totalRatings": "142",
+                                "rating": "4.0"
+                            },
+                            "flags": {
+                                "isClearance": false,
+                                "isRollback": false,
+                                "isReducedPrice": false,
+                                "isSpecialBuy": false,
+                                "isNew": false
+                            },
+                            "imageSrc": "https://i5.walmartimages.com/asr/956c07c5-0331-43f6-8abc-b949183ab6be.f64721f78941a92268667d734426a206.jpeg",
+                            "productType": "REGULAR",
+                            "canAddToCart": true,
+                            "productUrl": "/ip/Call-of-Duty-Black-Ops-Cold-War-Activision-PlayStation-5/176630812?athcpid=176630812&athpgid=athenaItemPage&athcgid=null&athznid=PWBAB&athieid=v0&athstid=CS020&athguid=739516f7-007-178b2fb55f2573&athancid=null&athena=true",
+                            "quantity": 2323,
+                            "availabilityStatus": "AVAILABLE",
+                            "productName": "Call of Duty: Black Ops Cold War, Activision, PlayStation 5",
+                            "category": "Video Games",
+                            "maxOrderQuantity": 2,
+                            "brand": "Activision",
+                            "geoItemClassification": "NETWORK_GEO",
+                            "alternateShelves": [
+                                "1086005"
+                            ],
+                            "hasVirtualPack": false,
+                            "enableSponsoredProductTag": false,
+                            "isTwoDayShippingEligible": false,
+                            "isNextDayEligible": false
+                        },
+                        {
+                            "id": {
+                                "productId": "5G4811TL51CH",
+                                "usItemId": "519174904",
+                                "offerId": "46EB974BB125426A9E91E8A36122F67F",
+                                "usSellerId": null
+                            },
+                            "price": {
+                                "comparisonPrice": null,
+                                "comparisonMinPrice": null,
+                                "submapType": null,
+                                "ppu": {
+                                    "unitValue": 44.88,
+                                    "uomType": "EA"
+                                },
+                                "fromPrice": null,
+                                "minPrice": null,
+                                "currentPrice": 44.88,
+                                "isStrikeThrough": false,
+                                "maxPrice": null,
+                                "comparisonMaxPrice": null
+                            },
+                            "ratings": {
+                                "totalRatings": "106",
+                                "rating": "4.4"
+                            },
+                            "flags": {
+                                "isClearance": false,
+                                "isRollback": false,
+                                "isReducedPrice": false,
+                                "isSpecialBuy": false,
+                                "isNew": false
+                            },
+                            "imageSrc": "https://i5.walmartimages.com/asr/708e3e29-df5d-48fb-9919-8356ff05f0a0.1814ae5c5045557a2fd164b483291547.jpeg",
+                            "productType": "REGULAR",
+                            "canAddToCart": true,
+                            "productUrl": "/ip/PowerA-Enhanced-Wireless-Controller-for-Nintendo-Switch-SMB3/519174904?athcpid=519174904&athpgid=athenaItemPage&athcgid=null&athznid=PWBAB&athieid=v0&athstid=CS020&athguid=739516f7-007-178b2fb55f2573&athancid=null&athena=true",
+                            "quantity": 215,
+                            "availabilityStatus": "AVAILABLE",
+                            "productName": "PowerA Enhanced Wireless Controller for Nintendo Switch - SMB3",
+                            "category": "Video Games",
+                            "maxOrderQuantity": 100,
+                            "brand": "PowerA",
+                            "geoItemClassification": "NETWORK_GEO",
+                            "alternateShelves": [
+                                "1263324",
+                                "6740467"
+                            ],
+                            "hasVirtualPack": false,
+                            "enableSponsoredProductTag": false,
+                            "isTwoDayShippingEligible": false,
+                            "isNextDayEligible": false
+                        },
+                        {
+                            "id": {
+                                "productId": "614SXTVAKCKJ",
+                                "usItemId": "909839536",
+                                "offerId": "EADCE5F74CF94F0BA2C42111B2E4658F",
+                                "usSellerId": null
+                            },
+                            "price": {
+                                "comparisonPrice": null,
+                                "comparisonMinPrice": null,
+                                "submapType": null,
+                                "ppu": {
+                                    "unitValue": 60.94,
+                                    "uomType": "EA"
+                                },
+                                "fromPrice": null,
+                                "minPrice": null,
+                                "currentPrice": 60.94,
+                                "isStrikeThrough": false,
+                                "maxPrice": null,
+                                "comparisonMaxPrice": null
+                            },
+                            "ratings": {
+                                "totalRatings": "17",
+                                "rating": "3.8"
+                            },
+                            "flags": {
+                                "isClearance": false,
+                                "isRollback": false,
+                                "isReducedPrice": false,
+                                "isSpecialBuy": false,
+                                "isNew": false
+                            },
+                            "imageSrc": "https://i5.walmartimages.com/asr/e49dc1db-d452-4e77-b348-f2d5b45f7119.5a0834de9942b707d29bba27a66a2ca0.png",
+                            "productType": "REGULAR",
+                            "canAddToCart": true,
+                            "productUrl": "/ip/NBA-2K21-2K-Xbox-Series-X-710425597145/909839536?athcpid=909839536&athpgid=athenaItemPage&athcgid=null&athznid=PWBAB&athieid=v0&athstid=CS020&athguid=739516f7-007-178b2fb55f2573&athancid=null&athena=true",
+                            "quantity": 2285,
+                            "availabilityStatus": "AVAILABLE",
+                            "productName": "NBA 2K21, 2K, Xbox Series X, 710425597145",
+                            "category": "Sports & Outdoors",
+                            "maxOrderQuantity": 2,
+                            "brand": "2K",
+                            "geoItemClassification": "NETWORK_GEO",
+                            "alternateShelves": [
+                                "5000667"
+                            ],
+                            "hasVirtualPack": false,
+                            "enableSponsoredProductTag": false,
+                            "isTwoDayShippingEligible": false,
+                            "isNextDayEligible": false
+                        },
+                        {
+                            "id": {
+                                "productId": "5PX3XU5SUY6H",
+                                "usItemId": "784834522",
+                                "offerId": "B22238E43C834659996DA7D6C494DB96",
+                                "usSellerId": null
+                            },
+                            "price": {
+                                "comparisonPrice": null,
+                                "comparisonMinPrice": null,
+                                "submapType": null,
+                                "ppu": {
+                                    "uomType": "EA"
+                                },
+                                "fromPrice": null,
+                                "minPrice": null,
+                                "currentPrice": 244.89,
+                                "isStrikeThrough": true,
+                                "maxPrice": null,
+                                "comparisonMaxPrice": null
+                            },
+                            "ratings": {
+                                "totalRatings": "409",
+                                "rating": "4.0"
+                            },
+                            "flags": {
+                                "isClearance": false,
+                                "isRollback": false,
+                                "isReducedPrice": false,
+                                "isSpecialBuy": false,
+                                "isNew": false
+                            },
+                            "imageSrc": "https://i5.walmartimages.com/asr/7fec57f1-a1fb-4ae6-a1eb-4f01001ad32d_1.a60451f60245d7bdfaa982cf580295ec.jpeg",
+                            "productType": "REGULAR",
+                            "canAddToCart": true,
+                            "productUrl": "/ip/Microsoft-Xbox-Elite-Wireless-Controller-Series-2-Black-FST-00001/784834522?athcpid=784834522&athpgid=athenaItemPage&athcgid=null&athznid=PWBAB&athieid=v0&athstid=CS020&athguid=739516f7-007-178b2fb55f2573&athancid=null&athena=true",
+                            "quantity": 494,
+                            "availabilityStatus": "AVAILABLE",
+                            "productName": "Microsoft Xbox Elite Wireless Controller Series 2, Black, FST-00001",
+                            "category": "Video Games",
+                            "maxOrderQuantity": 2,
+                            "brand": "Microsoft",
+                            "alternateShelves": [
+                                "2312432"
+                            ],
+                            "hasVirtualPack": false,
+                            "enableSponsoredProductTag": false,
+                            "isTwoDayShippingEligible": false,
+                            "isNextDayEligible": false
+                        },
+                        {
+                            "id": {
+                                "productId": "41WRMV8YBZQV",
+                                "usItemId": "237725128",
+                                "offerId": "80F61C07B3EF4E5A91F0639441D49C79",
+                                "usSellerId": null
+                            },
+                            "price": {
+                                "comparisonPrice": 59.99,
+                                "comparisonMinPrice": null,
+                                "submapType": null,
+                                "ppu": {
+                                    "unitValue": 36.51,
+                                    "uomType": "EA"
+                                },
+                                "fromPrice": null,
+                                "minPrice": null,
+                                "currentPrice": 36.51,
+                                "isStrikeThrough": false,
+                                "maxPrice": null,
+                                "comparisonMaxPrice": null
+                            },
+                            "ratings": {
+                                "totalRatings": "46",
+                                "rating": "4.0"
+                            },
+                            "flags": {
+                                "isClearance": false,
+                                "isRollback": false,
+                                "isReducedPrice": false,
+                                "isSpecialBuy": false,
+                                "isNew": false
+                            },
+                            "imageSrc": "https://i5.walmartimages.com/asr/efdb591f-8bbe-472d-93bc-d03a3a6cdb21.96fd3b292d598757776defb8f49c8482.jpeg",
+                            "productType": "REGULAR",
+                            "canAddToCart": true,
+                            "productUrl": "/ip/Assassin-s-Creed-Valhalla-PlayStation-5-Standard-Edition/237725128?athcpid=237725128&athpgid=athenaItemPage&athcgid=null&athznid=PWBAB&athieid=v0&athstid=CS020&athguid=739516f7-007-178b2fb55f2573&athancid=null&athena=true",
+                            "quantity": 1024,
+                            "availabilityStatus": "AVAILABLE",
+                            "productName": "Assassin’s Creed Valhalla PlayStation 5 Standard Edition",
+                            "category": "Video Games",
+                            "maxOrderQuantity": 2,
+                            "brand": "Ubisoft",
+                            "geoItemClassification": "NETWORK_GEO",
+                            "alternateShelves": [
+                                "7714368"
+                            ],
+                            "hasVirtualPack": false,
+                            "enableSponsoredProductTag": false,
+                            "isTwoDayShippingEligible": false,
+                            "isNextDayEligible": false
+                        },
+                        {
+                            "id": {
+                                "productId": "6HCBJA0LUSXU",
+                                "usItemId": "930891292",
+                                "offerId": "9828B8CCA3604A209F35AE48F98FD6F0",
+                                "usSellerId": null
+                            },
+                            "price": {
+                                "comparisonPrice": 59.99,
+                                "comparisonMinPrice": null,
+                                "submapType": null,
+                                "ppu": {
+                                    "uomType": "EA"
+                                },
+                                "fromPrice": null,
+                                "minPrice": null,
+                                "currentPrice": 19.99,
+                                "isStrikeThrough": false,
+                                "maxPrice": null,
+                                "comparisonMaxPrice": null
+                            },
+                            "ratings": {
+                                "totalRatings": "140",
+                                "rating": "4.4"
+                            },
+                            "flags": {
+                                "isClearance": false,
+                                "isRollback": false,
+                                "isReducedPrice": false,
+                                "isSpecialBuy": false,
+                                "isNew": true
+                            },
+                            "imageSrc": "https://i5.walmartimages.com/asr/d3d48eff-ed56-41f2-a5bd-213037bb206a.528734bfc7b7f2be44f1e642de4c33a7.png",
+                            "productType": "REGULAR",
+                            "canAddToCart": true,
+                            "productUrl": "/ip/NBA-2K21-2K-Xbox-One-710425596858/930891292?athcpid=930891292&athpgid=athenaItemPage&athcgid=null&athznid=PWBAB&athieid=v0&athstid=CS020&athguid=739516f7-007-178b2fb55f2573&athancid=null&athena=true",
+                            "quantity": 4326,
+                            "availabilityStatus": "AVAILABLE",
+                            "productName": "NBA 2K21, 2K, Xbox One, 710425596858",
+                            "category": "Sports & Outdoors",
+                            "maxOrderQuantity": 2,
+                            "brand": "2K",
+                            "geoItemClassification": "NETWORK_GEO",
+                            "alternateShelves": [
+                                "5000667"
+                            ],
+                            "hasVirtualPack": false,
+                            "enableSponsoredProductTag": false,
+                            "isTwoDayShippingEligible": false,
+                            "isNextDayEligible": false
+                        },
+                        {
+                            "id": {
+                                "productId": "3PEETK2XZAVA",
+                                "usItemId": "224138894",
+                                "offerId": "C8F3F922D4D74B9BBC3DC796DFE79CE4",
+                                "usSellerId": null
+                            },
+                            "price": {
+                                "comparisonPrice": 59.99,
+                                "comparisonMinPrice": null,
+                                "submapType": null,
+                                "ppu": {
+                                    "unitValue": 19.88,
+                                    "uomType": "EA",
+                                    "unitPriceDisplayCondition": "($35.48/cu ft)"
+                                },
+                                "fromPrice": null,
+                                "minPrice": null,
+                                "currentPrice": 19.88,
+                                "isStrikeThrough": false,
+                                "maxPrice": null,
+                                "comparisonMaxPrice": null
+                            },
+                            "ratings": {
+                                "totalRatings": "284",
+                                "rating": "4.3"
+                            },
+                            "flags": {
+                                "isClearance": false,
+                                "isRollback": false,
+                                "isReducedPrice": false,
+                                "isSpecialBuy": false,
+                                "isNew": false
+                            },
+                            "imageSrc": "https://i5.walmartimages.com/asr/66a67900-5913-40da-9da2-05b6ee2a85a3.68ab204142fb8608046da50fa881d9fc.png",
+                            "productType": "REGULAR",
+                            "canAddToCart": true,
+                            "productUrl": "/ip/Madden-NFL-21-Electronic-Arts-PlayStation-4-PlayStation-5/224138894?athcpid=224138894&athpgid=athenaItemPage&athcgid=null&athznid=PWBAB&athieid=v0&athstid=CS020&athguid=739516f7-007-178b2fb55f2573&athancid=null&athena=true",
+                            "quantity": 1128,
+                            "availabilityStatus": "AVAILABLE",
+                            "productName": "Madden NFL 21, Electronic Arts, PlayStation 4 & PlayStation 5",
+                            "category": "Video Games",
+                            "maxOrderQuantity": 2,
+                            "brand": "Electronic Arts",
+                            "geoItemClassification": "NETWORK_GEO",
+                            "alternateShelves": [
+                                "1358086",
+                                "1105671"
+                            ],
+                            "hasVirtualPack": false,
+                            "enableSponsoredProductTag": false,
+                            "isTwoDayShippingEligible": false,
+                            "isNextDayEligible": false
+                        },
+                        {
+                            "id": {
+                                "productId": "3EI888MU21LO",
+                                "usItemId": "48695413",
+                                "offerId": null,
+                                "usSellerId": null
+                            },
+                            "price": {
+                                "comparisonPrice": null,
+                                "comparisonMinPrice": null,
+                                "submapType": null,
+                                "ppu": {
+                                    "uomType": "EA"
+                                },
+                                "fromPrice": null,
+                                "minPrice": 5,
+                                "currentPrice": null,
+                                "isStrikeThrough": false,
+                                "maxPrice": 100,
+                                "comparisonMaxPrice": null
+                            },
+                            "ratings": {
+                                "totalRatings": "1538",
+                                "rating": "3.9"
+                            },
+                            "flags": {
+                                "isClearance": false,
+                                "isRollback": false,
+                                "isReducedPrice": false,
+                                "isSpecialBuy": false,
+                                "isNew": false
+                            },
+                            "imageSrc": "https://i5.walmartimages.com/asr/b6b8dbc4-5294-4edf-8461-7ef966e7e53c_1.718eecdb864af4e36fe7044cc238889a.jpeg",
+                            "productType": "BVSHELL",
+                            "canAddToCart": true,
+                            "productUrl": "/ip/Xbox-20-Gift-Card-Microsoft-Digital-Download/48695413?athcpid=48695413&athpgid=athenaItemPage&athcgid=null&athznid=PWBAB&athieid=v0&athstid=CS020&athguid=739516f7-007-178b2fb55f2573&athancid=null&athena=true",
+                            "quantity": 27918581112,
+                            "availabilityStatus": "AVAILABLE",
+                            "productName": "Xbox Gift Card, Microsoft, [Digital Download]",
+                            "category": "Video Games",
+                            "maxOrderQuantity": 2,
+                            "brand": "Microsoft",
+                            "geoItemClassification": "NEVER_TWO_DAY",
+                            "alternateShelves": [
+                                "1065244",
+                                "972339"
+                            ],
+                            "hasVirtualPack": false,
+                            "enableSponsoredProductTag": false,
+                            "hideAddToCart": true,
+                            "isTwoDayShippingEligible": false,
+                            "isNextDayEligible": false
+                        },
+                        {
+                            "id": {
+                                "productId": "2GEAO2MR1TBC",
+                                "usItemId": "780269283",
+                                "offerId": "C1ED256586E84C67BA4E94519EFA5548",
+                                "usSellerId": null
+                            },
+                            "price": {
+                                "comparisonPrice": 58.99,
+                                "comparisonMinPrice": null,
+                                "submapType": null,
+                                "ppu": {
+                                    "unitValue": 19.88,
+                                    "uomType": "EA",
+                                    "unitPriceDisplayCondition": "($19.88/cu ft)"
+                                },
+                                "fromPrice": null,
+                                "minPrice": null,
+                                "currentPrice": 19.88,
+                                "isStrikeThrough": false,
+                                "maxPrice": null,
+                                "comparisonMaxPrice": null
+                            },
+                            "ratings": {
+                                "totalRatings": "186",
+                                "rating": "4.4"
+                            },
+                            "flags": {
+                                "isClearance": false,
+                                "isRollback": false,
+                                "isReducedPrice": false,
+                                "isSpecialBuy": false,
+                                "isNew": false
+                            },
+                            "imageSrc": "https://i5.walmartimages.com/asr/3347baed-7cd0-401e-9d19-8740b8f7d48a.c8378fab0e3572848e91552e3c856f26.jpeg",
+                            "productType": "REGULAR",
+                            "canAddToCart": true,
+                            "productUrl": "/ip/Madden-NFL-21-Electronic-Arts-Xbox-One/780269283?athcpid=780269283&athpgid=athenaItemPage&athcgid=null&athznid=PWBAB&athieid=v0&athstid=CS020&athguid=739516f7-007-178b2fb55f2573&athancid=null&athena=true",
+                            "quantity": 3615,
+                            "availabilityStatus": "AVAILABLE",
+                            "productName": "Madden NFL 21, Electronic Arts, Xbox One",
+                            "category": "Video Games",
+                            "maxOrderQuantity": 2,
+                            "brand": "Electronic Arts",
+                            "geoItemClassification": "NETWORK_GEO",
+                            "alternateShelves": [
+                                "1358086",
+                                "1224996"
+                            ],
+                            "hasVirtualPack": false,
+                            "enableSponsoredProductTag": false,
+                            "isTwoDayShippingEligible": false,
+                            "isNextDayEligible": false
+                        },
+                        {
+                            "id": {
+                                "productId": "4AHCL45DL79I",
+                                "usItemId": "795159051",
+                                "offerId": "7A361B74694B4510A4A5501FBC34F24D",
+                                "usSellerId": null
+                            },
+                            "price": {
+                                "comparisonPrice": null,
+                                "comparisonMinPrice": null,
+                                "submapType": null,
+                                "ppu": {
+                                    "unitValue": 69,
+                                    "uomType": "EA",
+                                    "unitPriceDisplayCondition": "($69.00/cu ft)"
+                                },
+                                "fromPrice": null,
+                                "minPrice": null,
+                                "currentPrice": 69,
+                                "isStrikeThrough": false,
+                                "maxPrice": null,
+                                "comparisonMaxPrice": null
+                            },
+                            "ratings": {
+                                "totalRatings": "94",
+                                "rating": "4.5"
+                            },
+                            "flags": {
+                                "isClearance": false,
+                                "isRollback": false,
+                                "isReducedPrice": false,
+                                "isSpecialBuy": false,
+                                "isNew": false
+                            },
+                            "imageSrc": "https://i5.walmartimages.com/asr/3e38721c-85b1-4083-a3e3-e7af6f35875e.5ad4790dffb960ea3b6a26378064d9c0.png",
+                            "productType": "REGULAR",
+                            "canAddToCart": true,
+                            "productUrl": "/ip/Marvel-s-Spider-Man-Miles-Morales-Ultimate-Launch-Edition-Sony-PlayStation-5/795159051?athcpid=795159051&athpgid=athenaItemPage&athcgid=null&athznid=PWBAB&athieid=v0&athstid=CS020&athguid=739516f7-007-178b2fb55f2573&athancid=null&athena=true",
+                            "quantity": 758,
+                            "availabilityStatus": "AVAILABLE",
+                            "productName": "Marvel’s Spider-Man: Miles Morales Ultimate Launch Edition, Sony, PlayStation 5",
+                            "category": "Video Games",
+                            "maxOrderQuantity": 2,
+                            "brand": "Sony Interactive Entertai",
+                            "geoItemClassification": "NETWORK_GEO",
+                            "alternateShelves": [
+                                "6854331",
+                                "3886588"
+                            ],
+                            "hasVirtualPack": false,
+                            "enableSponsoredProductTag": false,
+                            "isTwoDayShippingEligible": false,
+                            "isNextDayEligible": false
+                        },
+                        {
+                            "id": {
+                                "productId": "135TJV777V4P",
+                                "usItemId": "414266647",
+                                "offerId": "41587A5AAA2F442F8657AF62BD3988E6",
+                                "usSellerId": null
+                            },
+                            "price": {
+                                "comparisonPrice": null,
+                                "comparisonMinPrice": null,
+                                "submapType": null,
+                                "ppu": {
+                                    "uomType": "EA"
+                                },
+                                "fromPrice": null,
+                                "minPrice": null,
+                                "currentPrice": 24,
+                                "isStrikeThrough": false,
+                                "maxPrice": null,
+                                "comparisonMaxPrice": null
+                            },
+                            "ratings": {
+                                "totalRatings": "37",
+                                "rating": "4.5"
+                            },
+                            "flags": {
+                                "isClearance": false,
+                                "isRollback": false,
+                                "isReducedPrice": false,
+                                "isSpecialBuy": false,
+                                "isNew": false
+                            },
+                            "imageSrc": "https://i5.walmartimages.com/asr/74dd306c-92cf-4f1f-abdf-555536592b1b.bdd3a5a3075d4c51c250adca7fd141b6.png",
+                            "productType": "REGULAR",
+                            "canAddToCart": true,
+                            "productUrl": "/ip/FIFA-21-Electronic-Arts-Xbox-One-Physical-Edition/414266647?athcpid=414266647&athpgid=athenaItemPage&athcgid=null&athznid=PWBAB&athieid=v0&athstid=CS020&athguid=739516f7-007-178b2fb55f2573&athancid=null&athena=true",
+                            "quantity": 7328,
+                            "availabilityStatus": "AVAILABLE",
+                            "productName": "FIFA 21, Electronic Arts, Xbox One, Physical Edition",
+                            "category": "Video Games",
+                            "brand": "Electronic Arts",
+                            "geoItemClassification": "NETWORK_GEO",
+                            "alternateShelves": [
+                                "1358086",
+                                "8715992"
+                            ],
+                            "hasVirtualPack": false,
+                            "enableSponsoredProductTag": false,
+                            "isTwoDayShippingEligible": false,
+                            "isNextDayEligible": false
+                        },
+                        {
+                            "id": {
+                                "productId": "5FK7TCY03TY1",
+                                "usItemId": "596709297",
+                                "offerId": "4CFD2E2B212C43DE8B4FE090F52C8988",
+                                "usSellerId": null
+                            },
+                            "price": {
+                                "comparisonPrice": null,
+                                "comparisonMinPrice": null,
+                                "submapType": null,
+                                "ppu": {
+                                    "uomType": "EA"
+                                },
+                                "fromPrice": null,
+                                "minPrice": null,
+                                "currentPrice": 33.4,
+                                "isStrikeThrough": true,
+                                "maxPrice": null,
+                                "comparisonMaxPrice": null
+                            },
+                            "ratings": {
+                                "totalRatings": "15",
+                                "rating": "4.1"
+                            },
+                            "flags": {
+                                "isClearance": false,
+                                "isRollback": false,
+                                "isReducedPrice": false,
+                                "isSpecialBuy": false,
+                                "isNew": false
+                            },
+                            "imageSrc": "https://i5.walmartimages.com/asr/fecb50cf-4a84-4000-bb2d-2e0b4b99deb6.7f5edfd7b17eb23ed7762ceb1847b7cc.jpeg",
+                            "productType": "REGULAR",
+                            "canAddToCart": true,
+                            "productUrl": "/ip/Microsoft-Xbox-Rechargeable-Battery-USB-C-Cable-External-battery-pack-for-Xbox-Series-S-Xbox-Series-X/596709297?athcpid=596709297&athpgid=athenaItemPage&athcgid=null&athznid=PWBAB&athieid=v0&athstid=CS020&athguid=739516f7-007-178b2fb55f2573&athancid=null&athena=true",
+                            "quantity": 1,
+                            "availabilityStatus": "AVAILABLE",
+                            "productName": "Microsoft Xbox Rechargeable Battery   USB-C Cable - External battery pack - for Xbox Series S, Xbox Series X",
+                            "category": "Video Games",
+                            "brand": "Microsoft",
+                            "geoItemClassification": "NETWORK_GEO",
+                            "alternateShelves": [
+                                "2312432"
+                            ],
+                            "hasVirtualPack": false,
+                            "enableSponsoredProductTag": false,
+                            "isTwoDayShippingEligible": true,
+                            "isNextDayEligible": false
+                        }
+                    ]
+                }
+            },
+            "publishedDate": 1596559391249,
+            "moduleId": "c76c02e4-f6de-42ed-8351-d278c21f63ee",
+            "module_id": "c76c02e4-f6de-42ed-8351-d278c21f63ee",
+            "matchedTrigger": {
+                "pageType": "ItemPageGlobal",
+                "pageId": "global_evergreen",
+                "zone": "contentZoneMiddle2",
+                "inheritable": false,
+                "pageIdMap": null
+            }
+        },
+        {
+            "name": "PersonalizationModule 3",
+            "type": "PersonalizationModule",
+            "version": 3,
+            "status": "published",
+            "schedule": {
+                "start": null,
+                "end": null,
+                "priority": 10,
+                "expEnabled": false
+            },
+            "triggers": [
+                {
+                    "pageType": "ItemPageGlobal",
+                    "pageId": "global_evergreen",
+                    "zone": "contentZoneMiddle3",
+                    "inheritable": false,
+                    "pageIdMap": null
+                }
+            ],
+            "targeting": {},
+            "configs": {
+                "DefaultItemCarousel": {
+                    "title": "Customers also viewed these products",
+                    "tileOptions": {
+                        "uid": "JA5NVoTb",
+                        "ratingsReviews": "on",
+                        "deliveryPass": "on",
+                        "actions": "off",
+                        "itemFlag": "on",
+                        "productTitle": "double",
+                        "eroInfo": "off",
+                        "price": "on"
+                    },
+                    "themeColor": "#f2f8fd",
+                    "firstTile": null,
+                    "modelName": "vav",
+                    "viewAllLink": null,
+                    "key": "AthenaAtlasConfig",
+                    "products": [
+                        {
+                            "id": {
+                                "productId": "5KBU9U4Y06BT",
+                                "usItemId": "101507200",
+                                "offerId": "1F9DC5C3C21F4247BC2B7EA6D9B7C1A6",
+                                "usSellerId": null
+                            },
+                            "price": {
+                                "comparisonPrice": null,
+                                "comparisonMinPrice": null,
+                                "submapType": null,
+                                "ppu": {
+                                    "uomType": "EA"
+                                },
+                                "fromPrice": null,
+                                "minPrice": 424.72,
+                                "currentPrice": null,
+                                "isStrikeThrough": true,
+                                "maxPrice": 424.72,
+                                "comparisonMaxPrice": null
+                            },
+                            "ratings": {
+                                "totalRatings": "1449",
+                                "rating": "4.5"
+                            },
+                            "flags": {
+                                "isClearance": false,
+                                "isRollback": false,
+                                "isReducedPrice": false,
+                                "isSpecialBuy": false,
+                                "isNew": false
+                            },
+                            "imageSrc": "https://i5.walmartimages.com/asr/bb49560a-1e5e-4ac1-8b1e-a53597f44628_1.ceacbceb920d60041a6245961c2828f7.jpeg",
+                            "productType": "BVSHELL",
+                            "canAddToCart": true,
+                            "productUrl": "/ip/Sony-PlayStation-4-1TB-Slim-Gaming-Console/101507200?athcpid=101507200&athpgid=athenaItemPage&athcgid=null&athznid=PWVAV&athieid=v0&athstid=CS004&athguid=739516f7-007-178b2fb55f2573&athancid=null&athena=true",
+                            "quantity": 7375,
+                            "availabilityStatus": "AVAILABLE",
+                            "productName": "Sony PlayStation 4 1TB Slim Gaming Console",
+                            "category": "Video Games",
+                            "brand": "Sony",
+                            "geoItemClassification": "NETWORK_GEO",
+                            "alternateShelves": [
+                                "1040579"
+                            ],
+                            "hasVirtualPack": false,
+                            "enableSponsoredProductTag": false,
+                            "isTwoDayShippingEligible": false,
+                            "isNextDayEligible": false
+                        },
+                        {
+                            "id": {
+                                "productId": "5T46E4NG6PS1",
+                                "usItemId": "709776123",
+                                "offerId": "3F0C2869D2DF4D9BB17432C7DD426A08",
+                                "usSellerId": null
+                            },
+                            "price": {
+                                "comparisonPrice": null,
+                                "comparisonMinPrice": null,
+                                "submapType": null,
+                                "ppu": {
+                                    "uomType": "EA"
+                                },
+                                "fromPrice": null,
+                                "minPrice": null,
+                                "currentPrice": 373.99,
+                                "isStrikeThrough": false,
+                                "maxPrice": null,
+                                "comparisonMaxPrice": null
+                            },
+                            "ratings": {
+                                "totalRatings": "2860",
+                                "rating": "4.5"
+                            },
+                            "flags": {
+                                "isClearance": false,
+                                "isRollback": false,
+                                "isReducedPrice": false,
+                                "isSpecialBuy": false,
+                                "isNew": false
+                            },
+                            "imageSrc": "https://i5.walmartimages.com/asr/afdb71df-4810-4e3e-9c3c-187e88a98619_1.9abc0f91d776fcbf0b8b580e875ed6c0.jpeg",
+                            "productType": "REGULAR",
+                            "canAddToCart": true,
+                            "productUrl": "/ip/Nintendo-Switch-Console-with-Neon-Blue-Red-Joy-Con/709776123?athcpid=709776123&athpgid=athenaItemPage&athcgid=null&athznid=PWVAV&athieid=v0&athstid=CS004&athguid=739516f7-007-178b2fb55f2573&athancid=null&athena=true",
+                            "quantity": 769,
+                            "availabilityStatus": "AVAILABLE",
+                            "productName": "Nintendo Switch Console with Neon Blue & Red Joy-Con.",
+                            "category": "Video Games",
+                            "maxOrderQuantity": 1,
+                            "brand": "Nintendo",
+                            "geoItemClassification": "NETWORK_GEO",
+                            "alternateShelves": [
+                                "3137068"
+                            ],
+                            "hasVirtualPack": false,
+                            "enableSponsoredProductTag": false,
+                            "isTwoDayShippingEligible": false,
+                            "isNextDayEligible": false
+                        },
+                        {
+                            "id": {
+                                "productId": "2Y1R250YJ8G1",
+                                "usItemId": "539083068",
+                                "offerId": "FA781D8DDF9045F29248CFA14F7A1B08",
+                                "usSellerId": null
+                            },
+                            "price": {
+                                "comparisonPrice": null,
+                                "comparisonMinPrice": null,
+                                "submapType": null,
+                                "ppu": {
+                                    "uomType": "EA"
+                                },
+                                "fromPrice": null,
+                                "minPrice": null,
+                                "currentPrice": 349.99,
+                                "isStrikeThrough": false,
+                                "maxPrice": null,
+                                "comparisonMaxPrice": null
+                            },
+                            "ratings": {
+                                "totalRatings": "581",
+                                "rating": "4.3"
+                            },
+                            "flags": {
+                                "isClearance": false,
+                                "isRollback": false,
+                                "isReducedPrice": false,
+                                "isSpecialBuy": false,
+                                "isNew": false
+                            },
+                            "imageSrc": "https://i5.walmartimages.com/asr/aaa6495c-a918-4f98-8647-dcf0e0a261ed_1.fd7c21fe466336697ef2ebd4cd0349cf.jpeg",
+                            "productType": "REGULAR",
+                            "canAddToCart": true,
+                            "productUrl": "/ip/Nintendo-Switch-Console-Animal-Crossing-New-Horizons-Edition/539083068?athcpid=539083068&athpgid=athenaItemPage&athcgid=null&athznid=PWVAV&athieid=v0&athstid=CS004&athguid=739516f7-007-178b2fb55f2573&athancid=null&athena=true",
+                            "quantity": 2051,
+                            "availabilityStatus": "AVAILABLE",
+                            "productName": "Nintendo Switch Console, Animal Crossing: New Horizons Edition",
+                            "category": "Video Games",
+                            "maxOrderQuantity": 1,
+                            "brand": "Nintendo",
+                            "geoItemClassification": "NETWORK_GEO",
+                            "alternateShelves": [
+                                "3137068"
+                            ],
+                            "hasVirtualPack": false,
+                            "enableSponsoredProductTag": false,
+                            "isTwoDayShippingEligible": false,
+                            "isNextDayEligible": false
+                        },
+                        {
+                            "id": {
+                                "productId": "7GBNQO7G4P0O",
+                                "usItemId": "306029956",
+                                "offerId": "F68B6579DFEB4D119E467ED8EBE442B0",
+                                "usSellerId": null
+                            },
+                            "price": {
+                                "comparisonPrice": null,
+                                "comparisonMinPrice": null,
+                                "submapType": null,
+                                "ppu": {
+                                    "uomType": "EA",
+                                    "unitPriceDisplayCondition": "($199.00/cu ft)"
+                                },
+                                "fromPrice": null,
+                                "minPrice": 199,
+                                "currentPrice": null,
+                                "isStrikeThrough": false,
+                                "maxPrice": 234.98,
+                                "comparisonMaxPrice": null
+                            },
+                            "ratings": {
+                                "totalRatings": "1866",
+                                "rating": "4.6"
+                            },
+                            "flags": {
+                                "isClearance": false,
+                                "isRollback": false,
+                                "isReducedPrice": false,
+                                "isSpecialBuy": false,
+                                "isNew": false
+                            },
+                            "imageSrc": "https://i5.walmartimages.com/asr/e9472242-99d5-4406-94d7-8b73edbe5eea_1.7322519ce232cb223204952198d9921d.jpeg",
+                            "productType": "BVSHELL",
+                            "canAddToCart": true,
+                            "productUrl": "/ip/Nintendo-Switch-Lite-Console-Turquoise/306029956?athcpid=306029956&athpgid=athenaItemPage&athcgid=null&athznid=PWVAV&athieid=v0&athstid=CS004&athguid=739516f7-007-178b2fb55f2573&athancid=null&athena=true",
+                            "quantity": 250,
+                            "availabilityStatus": "AVAILABLE",
+                            "productName": "Nintendo Switch Lite",
+                            "category": "Video Games",
+                            "maxOrderQuantity": 2,
+                            "brand": "Nintendo",
+                            "geoItemClassification": "NETWORK_GEO",
+                            "alternateShelves": [
+                                "3137068",
+                                "1040581"
+                            ],
+                            "hasVirtualPack": false,
+                            "enableSponsoredProductTag": false,
+                            "isTwoDayShippingEligible": true,
+                            "isNextDayEligible": false
+                        },
+                        {
+                            "id": {
+                                "productId": "0V61PT4RRLPD",
+                                "usItemId": "702974414",
+                                "offerId": "382BE511D2A8462891854C4472C4F2E0",
+                                "usSellerId": null
+                            },
+                            "price": {
+                                "comparisonPrice": null,
+                                "comparisonMinPrice": null,
+                                "submapType": null,
+                                "ppu": {
+                                    "uomType": "EA",
+                                    "unitPriceDisplayCondition": "($299.00/cu ft)"
+                                },
+                                "fromPrice": null,
+                                "minPrice": null,
+                                "currentPrice": 424.99,
+                                "isStrikeThrough": false,
+                                "maxPrice": null,
+                                "comparisonMaxPrice": null
+                            },
+                            "ratings": {
+                                "totalRatings": "754",
+                                "rating": "3.6"
+                            },
+                            "flags": {
+                                "isClearance": false,
+                                "isRollback": false,
+                                "isReducedPrice": false,
+                                "isSpecialBuy": false,
+                                "isNew": false
+                            },
+                            "imageSrc": "https://i5.walmartimages.com/asr/76ffe858-df73-4983-b685-1935300716d1.c7c0552bb10ca09e7069316ae6692035.jpeg",
+                            "productType": "REGULAR",
+                            "canAddToCart": true,
+                            "productUrl": "/ip/Nintendo-Switch-w-Neon-Blue-Neon-Red-Joy-Con-Mario-Kart-8-Deluxe-Full-Game-Download-3-Month-Nintendo-Switch-Online-Individual-Membership/702974414?athcpid=702974414&athpgid=athenaItemPage&athcgid=null&athznid=PWVAV&athieid=v0&athstid=CS004&athguid=739516f7-007-178b2fb55f2573&athancid=null&athena=true",
+                            "quantity": 478,
+                            "availabilityStatus": "AVAILABLE",
+                            "productName": "Nintendo Switch™ w/ Neon Blue & Neon Red Joy-Con™   Mario Kart™ 8 Deluxe (Full Game Download)   3 Month Nintendo Switch Online Individual Membership",
+                            "category": "Video Games",
+                            "brand": "Nintendo",
+                            "alternateShelves": [
+                                "3137068"
+                            ],
+                            "hasVirtualPack": false,
+                            "enableSponsoredProductTag": false,
+                            "isTwoDayShippingEligible": false,
+                            "isNextDayEligible": false
+                        },
+                        {
+                            "id": {
+                                "productId": "2XEV0XL8DUOP",
+                                "usItemId": "666492910",
+                                "offerId": "BEA7109E6EAD49F2B8DE1811681D01F6",
+                                "usSellerId": null
+                            },
+                            "price": {
+                                "comparisonPrice": null,
+                                "comparisonMinPrice": 1254.59,
+                                "submapType": null,
+                                "ppu": {
+                                    "uomType": "EA"
+                                },
+                                "fromPrice": null,
+                                "minPrice": 1019.99,
+                                "currentPrice": null,
+                                "isStrikeThrough": true,
+                                "maxPrice": 1019.99,
+                                "comparisonMaxPrice": null
+                            },
+                            "ratings": {
+                                "totalRatings": "85",
+                                "rating": "1.1"
+                            },
+                            "flags": {
+                                "isClearance": false,
+                                "isRollback": false,
+                                "isReducedPrice": true,
+                                "isSpecialBuy": false,
+                                "isNew": false
+                            },
+                            "imageSrc": "https://i5.walmartimages.com/asr/482137e8-5333-44d1-9295-8423141de9b5.33a253a7744af47ee096340a7587e594.jpeg",
+                            "productType": "BVSHELL",
+                            "canAddToCart": true,
+                            "productUrl": "/ip/2020-Newest-X-Gaming-Console-Bundle-1TB-SSD-Black-Xbox-with-Two-Xbox-Wireless-Controllers-Black-and-White/666492910?athcpid=666492910&athpgid=athenaItemPage&athcgid=null&athznid=PWVAV&athieid=v0&athstid=CS004&athguid=739516f7-007-178b2fb55f2573&athancid=null&athena=true",
+                            "quantity": 19920,
+                            "availabilityStatus": "AVAILABLE",
+                            "productName": "2020 Newest X Gaming Console Bundle - 1TB SSD Black Xbox with Two Xbox Wireless Controllers Black and White",
+                            "category": "Shop by Brand",
+                            "brand": "Microsoft",
+                            "geoItemClassification": "NETWORK_GEO",
+                            "alternateShelves": [
+                                "2312432"
+                            ],
+                            "hasVirtualPack": false,
+                            "enableSponsoredProductTag": false,
+                            "isTwoDayShippingEligible": false,
+                            "isNextDayEligible": false
+                        },
+                        {
+                            "id": {
+                                "productId": "1TTML0AZAVX8",
+                                "usItemId": "604685632",
+                                "offerId": "8D934FD85A204787A408B21DA37A612A",
+                                "usSellerId": null
+                            },
+                            "price": {
+                                "comparisonPrice": null,
+                                "comparisonMinPrice": null,
+                                "submapType": null,
+                                "ppu": {
+                                    "uomType": "EA"
+                                },
+                                "fromPrice": null,
+                                "minPrice": null,
+                                "currentPrice": 599.99,
+                                "isStrikeThrough": false,
+                                "maxPrice": null,
+                                "comparisonMaxPrice": null
+                            },
+                            "ratings": {
+                                "totalRatings": "48",
+                                "rating": "3.5"
+                            },
+                            "flags": {
+                                "isClearance": false,
+                                "isRollback": false,
+                                "isReducedPrice": false,
+                                "isSpecialBuy": false,
+                                "isNew": false
+                            },
+                            "imageSrc": "https://i5.walmartimages.com/asr/b0717d07-7b91-42fd-8f42-e35df8b8021c_1.57724fdd930014623a73a0917a5477d4.jpeg",
+                            "productType": "REGULAR",
+                            "canAddToCart": true,
+                            "productUrl": "/ip/Microsoft-Xbox-One-S-1TB-All-Digital-Edition-Console-with-Xbox-One-Wireless-Controller-Renewed/604685632?athcpid=604685632&athpgid=athenaItemPage&athcgid=null&athznid=PWVAV&athieid=v0&athstid=CS004&athguid=739516f7-007-178b2fb55f2573&athancid=null&athena=true",
+                            "quantity": 1,
+                            "availabilityStatus": "AVAILABLE",
+                            "productName": "Microsoft - Xbox One S 1TB All-Digital Edition Console with Xbox One Wireless Controller (Renewed)",
+                            "category": "Video Games",
+                            "brand": "Microsoft",
+                            "alternateShelves": [
+                                "3399301"
+                            ],
+                            "hasVirtualPack": false,
+                            "enableSponsoredProductTag": false,
+                            "isTwoDayShippingEligible": false,
+                            "isNextDayEligible": false
+                        }
+                    ]
+                }
+            },
+            "publishedDate": 1596559259071,
+            "moduleId": "40eab1d4-e8a9-4b42-b4ef-b5a0f443eda9",
+            "module_id": "40eab1d4-e8a9-4b42-b4ef-b5a0f443eda9",
+            "matchedTrigger": {
+                "pageType": "ItemPageGlobal",
+                "pageId": "global_evergreen",
+                "zone": "contentZoneMiddle3",
+                "inheritable": false,
+                "pageIdMap": null
+            }
+        },
+        {
+            "name": "PersonalizationModule 4",
+            "type": "PersonalizationModule",
+            "version": 1,
+            "status": "published",
+            "schedule": {
+                "start": null,
+                "end": null,
+                "priority": 10,
+                "expEnabled": false
+            },
+            "triggers": [
+                {
+                    "pageType": "ItemPageGlobal",
+                    "pageId": "global_evergreen",
+                    "zone": "contentZoneBottom1",
+                    "inheritable": false,
+                    "pageIdMap": null
+                }
+            ],
+            "targeting": {},
+            "configs": {},
+            "publishedDate": 1516755413021,
+            "moduleId": "e0c60b55-ad74-43f5-b0d0-024626a4dff6",
+            "module_id": "e0c60b55-ad74-43f5-b0d0-024626a4dff6",
+            "matchedTrigger": {
+                "pageType": "ItemPageGlobal",
+                "pageId": "global_evergreen",
+                "zone": "contentZoneBottom1",
+                "inheritable": false,
+                "pageIdMap": null
+            }
+        },
+        {
+            "name": "SOI Module P13N ATF",
+            "type": "PersonalizationModule",
+            "version": 2,
+            "status": "published",
+            "schedule": {
+                "start": null,
+                "end": null,
+                "priority": 10,
+                "expEnabled": false
+            },
+            "triggers": [
+                {
+                    "pageType": "ItemPageGlobal",
+                    "pageId": "global_evergreen",
+                    "zone": "productBotZone1",
+                    "inheritable": false,
+                    "pageIdMap": null
+                }
+            ],
+            "targeting": {},
+            "configs": {},
+            "publishedDate": 1596833215851,
+            "moduleId": "508e6013-30ad-4331-93b7-5b04eeb10b42",
+            "module_id": "508e6013-30ad-4331-93b7-5b04eeb10b42",
+            "matchedTrigger": {
+                "pageType": "ItemPageGlobal",
+                "pageId": "global_evergreen",
+                "zone": "productBotZone1",
+                "inheritable": false,
+                "pageIdMap": null
+            }
+        },
+        {
+            "name": "p13N - Related Searches Bottom Zone",
+            "type": "PersonalizationModule",
+            "version": 2,
+            "status": "published",
+            "schedule": {
+                "start": null,
+                "end": null,
+                "priority": 1,
+                "expEnabled": false
+            },
+            "triggers": [
+                {
+                    "pageType": "ItemPageGlobal",
+                    "pageId": "global_evergreen",
+                    "zone": "contentZoneBottom2",
+                    "inheritable": false,
+                    "pageIdMap": null
+                }
+            ],
+            "targeting": {},
+            "configs": {},
+            "publishedDate": 1599147409593,
+            "moduleId": "a5c5943c-da1d-4fe0-9ac4-1a6beb37f1d6",
+            "module_id": "a5c5943c-da1d-4fe0-9ac4-1a6beb37f1d6",
+            "matchedTrigger": {
+                "pageType": "ItemPageGlobal",
+                "pageId": "global_evergreen",
+                "zone": "contentZoneBottom2",
+                "inheritable": false,
+                "pageIdMap": null
+            }
+        },
+        {
+            "name": "PersonalizationModule 5 - Desktop Only",
+            "type": "PersonalizationModule",
+            "version": 1,
+            "status": "published_staged_published",
+            "schedule": {
+                "start": null,
+                "end": null,
+                "priority": 10,
+                "expEnabled": false
+            },
+            "triggers": [
+                {
+                    "pageType": "ItemPageGlobal",
+                    "pageId": "global_evergreen",
+                    "zone": "contentZoneBottom5",
+                    "inheritable": false,
+                    "pageIdMap": null
+                }
+            ],
+            "targeting": {
+                "deviceDisplay": [
+                    "desktopOnly"
+                ]
+            },
+            "configs": {},
+            "publishedDate": 1516755477260,
+            "moduleId": "91478264-3d15-4852-a6fd-7744137a864c",
+            "module_id": "91478264-3d15-4852-a6fd-7744137a864c",
+            "matchedTrigger": {
+                "pageType": "ItemPageGlobal",
+                "pageId": "global_evergreen",
+                "zone": "contentZoneBottom5",
+                "inheritable": false,
+                "pageIdMap": null
+            }
+        }
+    ]
+}

@@ -14,9 +14,17 @@ import string
 import random
 import re
 import os
+import socket
+import pygeoip
+from langdetect import detect
+from pycountry import languages
+from textblob import TextBlob
+from functions import Functions, Time
 
-token = "fc7ea3a02234f4589f5042bfcf9d637f"
+# token = "fc7ea3a02234f4589f5042bfcf9d637f"
+token = "a85593889ea045d5a3a828b5df4278ce"
 LOGS = []
+funct = Functions()
 
 def main():
     #Run the url crawl if True, Search by keywords if False
@@ -33,9 +41,14 @@ def main():
     
     if not fname: raise ValueError("You forgot to set a file name")
     if articles and not domain:
-        urls = open_file()
-        data = get_article(urls, force_diff)
-        save_excel(data, fname)
+        # urls = open_file()
+        main_time = Time()
+        user_blog_records = get_records()
+        data = get_article(user_blog_records, force_diff)
+        # Run blogpost post processing here
+        
+        main_time.finished()
+        # save_excel(data, fname)
         if LOGS: save_excel(LOGS, "Logs_" + datetime.datetime.now().strftime("%Y-%m-%d_%H-%M"))
     elif articles and domain:
         domains = open_file()
@@ -66,19 +79,29 @@ def main():
 
 
 
-def get_article(urls, force_diff=False):
+def get_article(user_blog_records, force_diff=False):
     articles = []
-    if force_diff: articles += [diff_get_article(x) for x in tqdm(urls, desc="Articles")]
+    if force_diff: articles += [diff_get_article(x['url']) for x in tqdm(user_blog_records, desc="Articles")]
     else:
         connection = get_connection()
-        for url in tqdm(urls, desc="Articles"):
+        for user_blog_record in tqdm(user_blog_records, desc="Articles"):
+            url = user_blog_record['url']
             with connection.cursor() as cursor:
-                cursor.execute("SELECT * FROM posts where url = %s;", url)
+                cursor.execute("SELECT * FROM blogposts where permalink = %s;", url)
                 record = cursor.fetchall()
                 if record:
                     articles.append(record[0])
                 else:
-                    articles += diff_get_article(url)
+                    # Update status of blogs to be crawled to -1 to avoid recrawling
+                    with connection.cursor() as cursor:
+                        cursor.execute(f"""
+                                UPDATE user_blog
+                                SET processed = -1
+                                WHERE url ="{url}"
+                            """)
+                    connection.commit()
+                    articles += diff_get_article(url, user_blog_record)
+                    # if diff_get_article(url, user_blog_record) == "Processed"
         connection.close()
     return articles
 
@@ -117,7 +140,7 @@ def get_domain(domain: str):
 
 
 
-def process_diff_data(diff_data):
+def process_diff_data(diff_data, record):
     articles = []
     if len(diff_data) > 5:
         pbar = tqdm(total=len(diff_data), desc="Processing Data")
@@ -137,57 +160,66 @@ def process_diff_data(diff_data):
                 published_date = None
             html_content = data['html'] if 'html' in data else None
             links = get_links(html_content) if html_content else None
-            author = data['author'] if 'author' in data else None
-            tags = tags_to_json([x['label'] for x in data['tags']]) if 'tags' in data else None
+            author = data['author'] if 'author' in data else domain
+            # tags = tags_to_json([x['label'] for x in data['tags']]) if 'tags' in data else None
+
+            tags = ','.join([x['label'] for x in data['tags']] )if 'tags' in data else None
+            post_length = len(data['text'])
+            num_outlinks = len(set(json.loads(links)["links"])) if (links is not None and  links!= 'null')  else 0
+            num_comments = 0
+
+            blogsite_url = urlparse(data['pageUrl']).scheme + '://' + urlparse(data['pageUrl']).netloc + '/'
+            blogsite_id = get_blogsite_id(blogsite_url)
+
+            location = funct.get_location(data['pageUrl'])
+            sentiment = funct.get_sentiment_score(data['text'])
+            language = get_language(data['text'])
+            user_id = record['userid']
+
+            #Checking for comments
+            if 'discussion' in data:
+                num_comments = data['discussion']['posts']
+
+            influence_score = get_influence_score(post_length, num_outlinks, num_comments)
+
             #adding Post
             if 'text' in data and '<?xml' not in data['text'] and good_url(data['pageUrl']):
-                sql_query = """INSERT INTO posts (domain, url, author, title, published_date, content, content_html, links, tags) 
-                        VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s) ON DUPLICATE KEY UPDATE domain = %s, author = %s, title = %s, 
-                        published_date = %s, content = %s, content_html = %s, links = %s, tags = %s, crawled_time = CURRENT_TIMESTAMP()"""
-                sql_data = (domain, data['pageUrl'], author, data['title'], published_date, data['text'], html_content, links, tags, 
-                            domain, author, data['title'], published_date, data['text'], html_content, links, tags)
+                sql_query = """INSERT INTO blogposts 
+                (title, date, blogger, post, post_length, num_outlinks, num_inlinks, num_comments, comments_url, permalink, 
+                blogsite_id, tags, location, sentiment, language, influence_score, user_id) 
+                VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s) ON DUPLICATE KEY 
+                UPDATE title = %s, date = %s, blogger = %s, post = %s, post_length = %s, num_outlinks = %s, 
+                num_inlinks = %s, num_comments =%s, comments_url = %s, permalink = %s, blogsite_id = %s, tags = %s, 
+                location = %s, sentiment = %s, language = %s, influence_score = %s, user_id = %s, last_modified_time = CURRENT_TIMESTAMP()"""
+                sql_data = (data['title'], published_date, author, data['text'], post_length, num_outlinks, 0, num_comments,None,
+                data['pageUrl'], blogsite_id, tags, location, sentiment, language, influence_score, user_id, data['title'], 
+                published_date, author, data['text'], post_length, num_outlinks, 0, num_comments, None,
+                data['pageUrl'], blogsite_id, tags, location, sentiment, language, influence_score, user_id)
+
                 commit_to_db(sql_query, sql_data)
+                update_blogsite_crawled_time(blogsite_id)
                 #Formating for return
-                articles.append({
-                    'domain': domain, 
-                    'url':data['pageUrl'],
-                    'author':author,
-                    'title':data['title'], 
-                    'title_sentiment':None,
-                    'title_toxicity':None,
-                    'published_date':published_date,
-                    'content':data['text'],
-                    'content_sentiment':None,
-                    'content_toxicity':None,
-                    'content_html':html_content,
-                    'language':None, 
-                    'links':links,
-                    'tags':tags,
-                    'crawled_time':datetime.datetime.now()
-                })
-                #Checking for comments
-                if 'discussion' in data:
-                    #Doing all non-reply comments first, then adding reply comments sorted by id (so we can get the comment_id from the db)
-                    comment_data = [x for x in data['discussion']['posts'] if 'parentId' not in x] + \
-                        sorted([x for x in data['discussion']['posts'] if 'parentId' in x], key=lambda k: k['id'])
-                    for c in comment_data:
-                        comment = {}
-                        comment['domain'] = domain
-                        comment['url'] = data['pageUrl']
-                        comment['username'] = c['author'] if 'author' in c else None
-                        comment['comment'] = c['text'] if 'text' in c else ""
-                        comment['comment_original'] = c['html'] if 'html' in c else None
-                        if 'date' not in c: comment['published_date'] = None
-                        elif type(c['date']) == dict: comment['published_date'] = parse(c['date']['str'].replace("d",""))
-                        else: comment['published_date'] = parse(c['date'])
-                        comment['links'] = get_links(c['html']) if 'html' in c else None
-                        comment['reply_count'] = len([x for x in comment_data if 'parentId' in x and c['id'] == x['parentId']])
-                        parent_comment = [x for x in comment_data if 'parentId' in c and c['parentId'] == x['id']]
-                        comment['reply_to'] = get_reply_to(parent_comment[0], data['pageUrl']) if parent_comment else None
-                        insert_comment(comment)
+                # articles.append({
+                #     'domain': domain, 
+                #     'url':data['pageUrl'],
+                #     'author':author,
+                #     'title':data['title'], 
+                #     'title_sentiment':None,
+                #     'title_toxicity':None,
+                #     'published_date':published_date,
+                #     'content':data['text'],
+                #     'content_sentiment':None,
+                #     'content_toxicity':None,
+                #     'content_html':html_content,
+                #     'language':None, 
+                #     'links':links,
+                #     'tags':tags,
+                #     'crawled_time':datetime.datetime.now()
+                # })
+                
         if len(diff_data) > 5:pbar.update()
     if len(diff_data) > 5:pbar.close()
-    return articles
+    return "Processed"
 
     
 def get_reply_to(parent_comment, url):
@@ -261,8 +293,9 @@ def diff_check_account_balance():
     r = requests.get(f"https://api.diffbot.com/v4/account?token={token}&days={days}")
     api_calls = r.json()
     total_usage = sum([x['credits'] for x in api_calls['usage']])
-    percentage = (total_usage/api_calls["planCredits"])*100
-    if total_usage >= api_calls["planCredits"]:
+    percentage = (total_usage/api_calls["planCredits"])*100 if "planCredits" in api_calls else 0
+    planCredits = api_calls["planCredits"] if "planCredits" in api_calls else total_usage +1
+    if total_usage >= planCredits:
         raise Exception(f"""You have exceeded the API limit for this key!!
         Over the last 30 days you have used {total_usage:,} credits. Stop Now!!!""")
     elif percentage in [50,60,70,80,85,90,95,97,98,99]:
@@ -299,7 +332,7 @@ def diff_get_keyword(keywords, domains=None, size=50, page_num=0):
 
     return process_diff_data(diff_data)
 
-def diff_get_article(url, paging=True, count=0):
+def diff_get_article(url, record, paging=True, count=0):
     #Checking for redirects
     try:
         r = requests.get(url)
@@ -343,7 +376,7 @@ def diff_get_article(url, paging=True, count=0):
         return []
     #Returing Data
     diff_data = request['objects']
-    return process_diff_data(diff_data)
+    return process_diff_data(diff_data, record)
     
 class DiffbotClient(object):
     base_url = 'http://api.diffbot.com/'
@@ -521,6 +554,113 @@ def open_file(fname='input.txt'):
     f.close()
     return data
 
+def get_records():
+    """[Getting urls from user_blog for processing]
+
+    Returns:
+        [type]: [description]
+    """
+    urls = []
+    connection = get_connection()
+    with connection.cursor() as cursor:
+        # Getting urls from user_blog
+        cursor.execute(f"""
+                SELECT url, userid
+                FROM user_blog
+                WHERE processed = 0
+                AND status = "not_crawled"
+                AND blogpost_id is null;
+            """)
+        records = cursor.fetchall()
+        # for record in records:
+        #     urls.append(record['url'])
+
+    connection.close()
+    cursor.close()
+    return records
+
+def get_blogsite_id(blogsite_url):
+    connection = get_connection()
+    blogsite_id = 0
+    with connection.cursor() as cursor:
+        try:
+            cursor.execute("select `blogsite_id` from `blogsites` where `blogsite_url` = %s", blogsite_url)
+            blogsite_id = cursor.fetchone()['blogsite_id']
+        except:
+            blogsite_name = urlparse(blogsite_url).netloc
+            site_type = 2
+            cursor.execute("insert into `blogsites`(blogsite_url, blogsite_name, site_type) values(%s, %s, %s)", (blogsite_url, blogsite_name, site_type))
+            cursor.execute("select `blogsite_id` from `blogsites` where `blogsite_url` = %s", blogsite_url)
+            blogsite_id = cursor.fetchone()['blogsite_id']
+            connection.commit()
+        finally:
+            if (connection.open):
+                cursor.close()
+                connection.close()
+    return blogsite_id
+
+# get ip address
+def get_ip_addr(url):
+
+    domain = urlparse(url).netloc
+    try:
+        ip_addr = socket.gethostbyname(domain)
+    except:
+        ip_addr = 'unknown'
+
+    return ip_addr
+
+# get geo-location
+def get_location(url):
+    try:
+        ip_addr = get_ip_addr(url)
+        geolib = pygeoip.GeoIP('GeoIP.dat')
+        location = geolib.country_code_by_addr(ip_addr)
+    except:
+        location = None
+
+    return location
+
+def get_language(post_content):
+    try:
+        lang_detect = detect(post_content)
+        post_lang = languages.get(alpha_2=lang_detect).name
+    except:
+        post_lang = 'unknown'
+    return post_lang
+
+def update_blogsite_crawled_time(blogsite_id):
+    connection = get_connection()
+    with connection.cursor() as cursor:
+        try:
+            cursor.execute("update blogtrackers.blogsites set last_crawled = CURRENT_TIMESTAMP() where `blogsite_id` = %s", (blogsite_id))
+            connection.commit()
+        except Exception as e:
+            raise Exception('Blogsite Update error')
+        finally:
+            if (connection.open):
+                cursor.close()
+                connection.close()
+
+# get influence score
+def get_influence_score(post_length, num_outlinks, comment_count):
+
+    length_factor = 0
+    num_inlinks = 0
+
+    if (post_length <= 350):
+        length_factor = 1
+    else:
+        length_factor = 2 if post_length <= 1500 else 3
+
+    scaling_factor = length_factor
+    outlinks_normalized = num_outlinks / length_factor
+    influence_flow = (0.6 * comment_count) + (0.7 * num_inlinks) - (0.3 * outlinks_normalized)
+    influence_score = scaling_factor * influence_flow
+    influence_score_rounded = round(influence_score,5)
+
+    return influence_score_rounded
+
 def open_keywords(use=None, fname='keywords.json',):
     with open(fname, encoding="utf-8") as json_file:
         data = json.load(json_file)
@@ -530,10 +670,10 @@ def open_keywords(use=None, fname='keywords.json',):
         except KeyError: raise KeyError("You chose a project name that is not in {}: {}".format(fname, use))
 
 def get_connection():
-    connection = pymysql.connect(host='144.167.35.221',
-                                user='diffbot',
-                                password='Cosmos1',
-                                db='blogs',
+    connection = pymysql.connect(host='cosmos-1.host.ualr.edu',
+                                user='ukraine_user',
+                                password='summer2014',
+                                db='blogtrackers',
                                 charset='utf8mb4',
                                 use_unicode=True,
                                 cursorclass=pymysql.cursors.DictCursor)
@@ -574,4 +714,10 @@ def commit_to_db(query, data, error=0):
 
 
 if __name__ == "__main__":
+    diff_data = json.load(open('test.json', 'r'))
+    record = {
+        "url":"https://www.torontosun.com/news/local-news/toronto-schools-closed-to-in-class-learning",
+        "userid":"btrackerdemo@gmail.com"
+    }
+    # process_diff_data(diff_data,record)
     main()
