@@ -19,6 +19,20 @@ import pygeoip
 from langdetect import detect
 from pycountry import languages
 from textblob import TextBlob
+from urllib.request import urlopen
+import atexit
+from apscheduler.schedulers.background import BackgroundScheduler
+from apscheduler.executors.pool import ThreadPoolExecutor, ProcessPoolExecutor
+from nltk import tokenize
+import nltk
+# nltk.download('punkt')
+# nltk.download('averaged_perceptron_tagger')
+# nltk.download('stopwords')
+import detoxify
+
+
+# import sys
+# sys.path.append("C:\\COSMOS\\ProcessScheduler")
 from functions import Functions, Time
 
 # token = "fc7ea3a02234f4589f5042bfcf9d637f"
@@ -42,14 +56,14 @@ def main():
     if not fname: raise ValueError("You forgot to set a file name")
     if articles and not domain:
         # urls = open_file()
-        main_time = Time()
+        # main_time = Time()
         user_blog_records = get_records()
         data = get_article(user_blog_records, force_diff)
         # Run blogpost post processing here
         
-        main_time.finished()
+        # main_time.finished()
         # save_excel(data, fname)
-        if LOGS: save_excel(LOGS, "Logs_" + datetime.datetime.now().strftime("%Y-%m-%d_%H-%M"))
+        # if LOGS: save_excel(LOGS, "Logs_" + datetime.datetime.now().strftime("%Y-%m-%d_%H-%M"))
     elif articles and domain:
         domains = open_file()
         for d in domains:
@@ -87,21 +101,24 @@ def get_article(user_blog_records, force_diff=False):
         for user_blog_record in tqdm(user_blog_records, desc="Articles"):
             url = user_blog_record['url']
             with connection.cursor() as cursor:
+                # Update status of blogs to be crawled to -1 to avoid recrawling
+                # values for processed field
+                # 0 -> not processed at all, needs to be run by diffbot
+                # -1 -> has been processed by diffbot and need to undergo post processing
+                # with connection.cursor() as cursor:
+                cursor.execute(f"""
+                        UPDATE user_blog
+                        SET processed = -1
+                        WHERE url ="{url}"
+                    """)
+                connection.commit()
                 cursor.execute("SELECT * FROM blogposts where permalink = %s;", url)
                 record = cursor.fetchall()
                 if record:
                     articles.append(record[0])
                 else:
-                    # Update status of blogs to be crawled to -1 to avoid recrawling
-                    with connection.cursor() as cursor:
-                        cursor.execute(f"""
-                                UPDATE user_blog
-                                SET processed = -1
-                                WHERE url ="{url}"
-                            """)
-                    connection.commit()
                     articles += diff_get_article(url, user_blog_record)
-                    # if diff_get_article(url, user_blog_record) == "Processed"
+                    # if diff_get_article(url, user_blog_record) == "Processed
         connection.close()
     return articles
 
@@ -144,82 +161,325 @@ def process_diff_data(diff_data, record):
     articles = []
     if len(diff_data) > 5:
         pbar = tqdm(total=len(diff_data), desc="Processing Data")
-    for data in diff_data: 
-        if 'pageUrl' in data:
-            #Cleaning
-            domain = urlparse(data['pageUrl']).netloc.replace("www.","")
-            if 'date' in data:
-                if 'timestamp' in data['date']:
-                    try: 
-                        published_date = datetime.datetime.fromtimestamp(data['date']['timestamp']/1000) 
-                    except OSError:
-                        published_date = None
+    for data in diff_data:
+        try: 
+            if 'pageUrl' in data:
+                #Cleaning
+                domain = urlparse(data['pageUrl']).netloc.replace("www.","")
+                if 'date' in data:
+                    if 'timestamp' in data['date']:
+                        try: 
+                            published_date = datetime.datetime.fromtimestamp(data['date']['timestamp']/1000) 
+                        except OSError:
+                            published_date = None
+                    else: 
+                        published_date = parse(data['date'])
                 else: 
-                    published_date = parse(data['date'])
-            else: 
-                published_date = None
-            html_content = data['html'] if 'html' in data else None
-            links = get_links(html_content) if html_content else None
-            author = data['author'] if 'author' in data else domain
-            # tags = tags_to_json([x['label'] for x in data['tags']]) if 'tags' in data else None
+                    published_date = None
+                html_content = data['html'] if 'html' in data else None
+                links = get_links(html_content) if html_content else None
+                author = data['author'] if 'author' in data else domain
+                # tags = tags_to_json([x['label'] for x in data['tags']]) if 'tags' in data else None
 
-            tags = ','.join([x['label'] for x in data['tags']] )if 'tags' in data else None
-            post_length = len(data['text'])
-            num_outlinks = len(set(json.loads(links)["links"])) if (links is not None and  links!= 'null')  else 0
-            num_comments = 0
+                tags = ','.join([x['label'] for x in data['tags']] )if 'tags' in data else None
+                post_length = len(data['text'])
+                outlinks = set(json.loads(links)["links"]) if (links is not None and  links!= 'null')  else None
+                # num_outlinks = len(set(json.loads(links)["links"])) if (links is not None and  links!= 'null')  else 0
+                num_outlinks = len(outlinks) if outlinks else 0
+                num_comments = 0
 
-            blogsite_url = urlparse(data['pageUrl']).scheme + '://' + urlparse(data['pageUrl']).netloc + '/'
-            blogsite_id = get_blogsite_id(blogsite_url)
+                blogsite_url = urlparse(data['pageUrl']).scheme + '://' + urlparse(data['pageUrl']).netloc + '/'
+                blogsite_id = get_blogsite_id(blogsite_url)
 
-            location = funct.get_location(data['pageUrl'])
-            sentiment = funct.get_sentiment_score(data['text'])
-            language = get_language(data['text'])
-            user_id = record['userid']
+                location = get_location(data['pageUrl'])
+                sentiment = get_sentiment_score(data['text'])
+                language = get_language(data['text'])
+                user_id = record['userid']
 
-            #Checking for comments
-            if 'discussion' in data:
-                num_comments = data['discussion']['posts']
+                #Checking for comments
+                if 'discussion' in data:
+                    num_comments = len(data['discussion']['posts'])
 
-            influence_score = get_influence_score(post_length, num_outlinks, num_comments)
+                influence_score = get_influence_score(post_length, num_outlinks, num_comments)
 
-            #adding Post
-            if 'text' in data and '<?xml' not in data['text'] and good_url(data['pageUrl']):
-                sql_query = """INSERT INTO blogposts 
-                (title, date, blogger, post, post_length, num_outlinks, num_inlinks, num_comments, comments_url, permalink, 
-                blogsite_id, tags, location, sentiment, language, influence_score, user_id) 
-                VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s) ON DUPLICATE KEY 
-                UPDATE title = %s, date = %s, blogger = %s, post = %s, post_length = %s, num_outlinks = %s, 
-                num_inlinks = %s, num_comments =%s, comments_url = %s, permalink = %s, blogsite_id = %s, tags = %s, 
-                location = %s, sentiment = %s, language = %s, influence_score = %s, user_id = %s, last_modified_time = CURRENT_TIMESTAMP()"""
-                sql_data = (data['title'], published_date, author, data['text'], post_length, num_outlinks, 0, num_comments,None,
-                data['pageUrl'], blogsite_id, tags, location, sentiment, language, influence_score, user_id, data['title'], 
-                published_date, author, data['text'], post_length, num_outlinks, 0, num_comments, None,
-                data['pageUrl'], blogsite_id, tags, location, sentiment, language, influence_score, user_id)
+                #adding Post
+                if 'text' in data and '<?xml' not in data['text'] and good_url(data['pageUrl']):
+                    sql_query = """INSERT INTO blogposts 
+                    (title, date, blogger, post, post_length, num_outlinks, num_inlinks, num_comments, comments_url, permalink, 
+                    blogsite_id, tags, location, sentiment, language, influence_score, user_id) 
+                    VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s) ON DUPLICATE KEY 
+                    UPDATE title = %s, date = %s, blogger = %s, post = %s, post_length = %s, num_outlinks = %s, 
+                    num_inlinks = %s, num_comments =%s, comments_url = %s, permalink = %s, blogsite_id = %s, tags = %s, 
+                    location = %s, sentiment = %s, language = %s, influence_score = %s, user_id = %s, last_modified_time = CURRENT_TIMESTAMP()"""
+                    sql_data = (data['title'], published_date, author, data['text'], post_length, num_outlinks, 0, num_comments,None,
+                    data['pageUrl'], blogsite_id, tags, location, sentiment, language, influence_score, user_id, data['title'], 
+                    published_date, author, data['text'], post_length, num_outlinks, 0, num_comments, None,
+                    data['pageUrl'], blogsite_id, tags, location, sentiment, language, influence_score, user_id)
 
-                commit_to_db(sql_query, sql_data)
-                update_blogsite_crawled_time(blogsite_id)
-                #Formating for return
-                # articles.append({
-                #     'domain': domain, 
-                #     'url':data['pageUrl'],
-                #     'author':author,
-                #     'title':data['title'], 
-                #     'title_sentiment':None,
-                #     'title_toxicity':None,
-                #     'published_date':published_date,
-                #     'content':data['text'],
-                #     'content_sentiment':None,
-                #     'content_toxicity':None,
-                #     'content_html':html_content,
-                #     'language':None, 
-                #     'links':links,
-                #     'tags':tags,
-                #     'crawled_time':datetime.datetime.now()
-                # })
-                
-        if len(diff_data) > 5:pbar.update()
+                    commit_to_db(sql_query, sql_data)
+                    update_process_stat(data['pageUrl'], record['id'])
+                    update_blogsite_crawled_time(blogsite_id)
+
+                    # Post-processing
+                    connection = get_connection()
+                    with connection.cursor() as cursor:
+                        cursor.execute(f"""
+                                SELECT blogpost_id, blogsite_id, post, date
+                                FROM blogposts
+                                WHERE permalink = "{data['pageUrl']}";
+                        """)
+                        post_records = cursor.fetchall()
+                    cursor.close()
+                    connection.close()
+
+                    if post_records:
+                        # inserting putlinks
+                        if outlinks:
+                            list_outlinks = map_oultink_entry(outlinks,post_records[0]['blogsite_id'],post_records[0]['blogpost_id'], domain, published_date)
+                            insert_outlink_entries(list_outlinks)
+                        
+                        # entity_sentiment
+                        entity_sentiment_results = funct.get_entity_sentiment(post_records[0])
+                        if entity_sentiment_results:
+                            connection = get_connection()
+                            for x in entity_sentiment_results:
+                                entity, entity_type = x.text, funct.func_type(x.label_)
+                                with connection.cursor() as cursor:
+                                    try:
+                                        query = '''INSERT INTO 
+                                                    blogpost_entitysentiment 
+                                                    (blogpost_id, entity, sentiment, blogsite_id, type) 
+                                                    values (%s, %s, %s, %s,%s)  
+                                                '''
+                                        entity_blogpost_id, entity_name, entity_sentiment, entity_blogsite_id, entity_type = post_records[0]['blogpost_id'], entity, 0, post_records[0]['blogsite_id'], entity_type
+                                        sql_data = (entity_blogpost_id, entity_name, entity_sentiment, entity_blogsite_id, entity_type)
+                                        cursor.execute(query, sql_data)
+                                        # cursor.close()
+                                        connection.commit()
+                                    except Exception as e:
+                                        if 'Duplicate entry' in str(e):
+                                            cursor.close()
+                                            connection.close()
+                                            return record
+                                        elif 'Data too long for column' in str(e):
+                                            cursor.close()
+                                            connection.close()
+                                            return record
+                                        else:
+                                            cursor.close()
+                                            connection.close()
+                                            return record
+                            
+                            connection.close()
+
+                        # narratives
+                        process_narratives_posts(post_records[0])
+                        # liwc
+                        # toxicity
+                        process_toxicity(post_records[0])
+
+                        # done will all the processing
+                        connection = get_connection()
+                        with connection.cursor() as cursor:
+                            cursor.execute(f"""
+                                UPDATE user_blog
+                                SET processing_status = 100, processed = 1
+                                WHERE url ="{data['pageUrl']}"
+                            """)
+                        connection.commit()
+                        cursor.close()
+                        connection.close()
+
+                        
+                    
+                    
+                    
+                    # update_valid(data['pageUrl'])
+                    #Formating for return
+                    # articles.append({
+                    #     'domain': domain, 
+                    #     'url':data['pageUrl'],
+                    #     'author':author,
+                    #     'title':data['title'], 
+                    #     'title_sentiment':None,
+                    #     'title_toxicity':None,
+                    #     'published_date':published_date,
+                    #     'content':data['text'],
+                    #     'content_sentiment':None,
+                    #     'content_toxicity':None,
+                    #     'content_html':html_content,
+                    #     'language':None, 
+                    #     'links':links,
+                    #     'tags':tags,
+                    #     'crawled_time':datetime.datetime.now()
+                    # })
+                else:
+                    update_invalid(data['pageUrl'])
+            else:
+                update_invalid(data['pageUrl'])
+                    
+            if len(diff_data) > 5:pbar.update()
+        except Exception as e:
+            print(e)
+            update_invalid(data['pageUrl'])
+            
+
     if len(diff_data) > 5:pbar.close()
     return "Processed"
+
+def update_valid(url):
+    connection = get_connection()
+    with connection.cursor() as cursor:
+        cursor.execute(f"""
+            UPDATE user_blog
+            SET processed = -1
+            WHERE url ="{url}"
+        """)
+    connection.commit()
+    cursor.close()
+    connection.close()
+
+def update_process_stat(url, id):
+    connection = get_connection()
+    with connection.cursor() as cursor:
+        cursor.execute(f"""
+            UPDATE user_blog
+            SET processing_status = 50
+            WHERE url ="{url}"
+            AND id = {id}
+        """)
+    connection.commit()
+    cursor.close()
+    connection.close()  
+
+def update_invalid(url):
+    # Update to 2; because not a valid URL or no data
+    connection = get_connection()
+    with connection.cursor() as cursor:
+        cursor.execute(f"""
+            UPDATE user_blog
+            SET processed = 2
+            WHERE url ="{url}"
+        """)
+    connection.commit()
+    cursor.close()
+    connection.close()
+
+
+def map_oultink_entry(outlinks,blogsite_id,blogpost_id,domain,pub_date):
+    outlink_batch = []
+    for link in outlinks :
+        outlink_dict = {}
+        outlink_dict['link'] = link.encode('utf-8')
+        outlink_dict['blogpost_id'] = blogpost_id
+        outlink_dict['blogsite_id'] = blogsite_id
+        outlink_dict['domain'] = urlparse(link).netloc
+        outlink_dict['date'] = pub_date.strftime("%Y-%m-%d")
+        outlink_batch.append(outlink_dict)
+    return outlink_batch
+
+def insert_outlink_entries(outlinks_list):
+    inserted_rows = 0 
+    connection = get_connection()
+    columns = ', '.join(outlinks_list[0].keys())
+    params = ', '.join(['%s'] * len(outlinks_list[0]))
+    link_list = [tuple(d.values()) for d in outlinks_list]
+    query = ''' INSERT INTO OUTLINKS (%s) VALUES (%s) ''' %(columns,params)
+    try :
+        with connection.cursor() as cursor:
+            try : 
+                inserted_rows = cursor.executemany(query, link_list)
+            except pymysql.err.IntegrityError as e:
+                if e.args[0] == 1062  :
+                    pass #Ignore Duplicate Entry 
+                else :
+                    raise Exception('{}, Error No. is {}'.format(e.args[1], e.args[0]))
+            except Exception as e:
+                raise Exception(e)
+        connection.commit()    
+    except Exception as e:
+        raise Exception(e)
+    finally:
+        if (connection.open):
+            cursor.close()
+            connection.close()
+    return inserted_rows
+
+def process_narratives_posts(record):
+    blogpostID = record['blogpost_id']
+    post = record['post']
+    ListSentences_Unique = []
+    entity_narrative_dict_list = []
+    countSentTotal = 0
+    countSentFiltered = 0
+    countSentFilteredTriplet = 0
+    textSentString = ''
+
+    stopWords = funct.get_stopwords()
+
+    connection = get_connection()
+    with connection.cursor() as cursor:
+        # Declaring the entities for the blogpost
+        cursor.execute(f"SELECT distinct entity from blogpost_entitysentiment where blogpost_id = {blogpostID}")
+        records_entity = cursor.fetchall()
+        objectEntitiesList = [x['entity'] for x in records_entity if x['entity'].lower() not in stopWords]
+
+    connection.close()
+    cursor.close()
+
+    for everyPost in tokenize.sent_tokenize(post):
+        countSentTotal = countSentTotal + 1
+        everyPost = everyPost.replace("’s", "s")
+        """ Clean up activity"""
+        everyPost = re.sub(r"[-()\"#/@;:<>{}`'’‘“”+=–—_…~|!?]", " ", everyPost)
+        if('on Twitter' not in everyPost and 'or e-mail to:' not in everyPost and 'd.getElementsByTagName' not in everyPost and len(everyPost)>10 and 'g.__ATA.initAd' not in everyPost and 'document.body.clientWidth' not in everyPost):
+            countSentFiltered = countSentFiltered +1
+            if everyPost not in ListSentences_Unique:
+                ListSentences_Unique.append(everyPost)
+                textSentString += str(' ') + str(everyPost)
+                countSentFilteredTriplet = countSentFilteredTriplet + 1
+    
+    ListSentences_Unique = []       
+    tfidf_string = funct.pos_tag_narratives(textSentString) #takes so much time
+    result_scored = funct.run_comprehensive(tfidf_string, stopWords)
+    sentences_scored = tokenize.sent_tokenize(result_scored)
+    
+    entity_count = []
+    record['index'] = "test_narrative_entities"
+    data_narratives = funct.entity_narratives(sentences_scored, record, objectEntitiesList, "elastic", entity_count)
+
+    # if 'Duplicate entry' in self.update_insert('''INSERT INTO narratives (blogpost_id, blogsite_id, narratives, entity_count) values (%s, %s, %s, %s) ''', (blogpostID, record['blogsite_id'], json.dumps(data_narratives), json.dumps(entity_count)), self.connect):
+    #     self.update_insert('''UPDATE narratives SET narratives=%s, entity_count = %s, blogsite_id = %s WHERE blogpost_id=%s;  ''', (json.dumps(data_narratives), json.dumps(entity_count), record['blogsite_id'], blogpostID), self.connect)
+
+    return data_narratives
+
+def process_toxicity(record):
+    clean_text = funct.clean_text(record['post'])
+    toxicity_result = funct.get_toxicity(clean_text, detoxify.detoxify.Detoxify('unbiased'))
+    if toxicity_result:
+        # for xx, post, blogpost_id, blogsite_id, result_insult, result_profanity, result_sexually_explicit, result_threat, result_identity_attack in zip(tqdm(chunk['post'], desc="Processing Toxicity Chunk", ascii=True,  file=sys.stdout), chunk['post'], chunk['blogpost_id'], chunk['blogsite_id'], toxicity_result['insult'], toxicity_result['obscene'], toxicity_result['sexual_explicit'], toxicity_result['threat'], toxicity_result['insult']):
+        result_insult = round(float(toxicity_result['insult']), 6)
+        result_profanity = round(float(toxicity_result['obscene']), 6)
+        result_sexually_explicit = round(float(toxicity_result['sexual_explicit']), 6)
+        result_threat = round(float(toxicity_result['threat']), 6)
+        result_identity_attack = round(float(toxicity_result['identity_attack']), 6)
+
+        language = funct.get_language(record['post'])
+        count = 0
+        if language == 'en':
+            commit_to_db('''INSERT INTO liwc 
+                                (blogpostid, insult, profanity, sexually_explicit, threat, identity_attack, blogsite_id) 
+                                values (%s, %s, %s, %s, %s, %s, %s) 
+                                ON DUPLICATE KEY UPDATE
+                                insult=%s, profanity=%s, sexually_explicit=%s, threat=%s, identity_attack=%s, blogsite_id = %s''', (record["blogpost_id"], result_insult, result_profanity, result_sexually_explicit, result_threat, result_identity_attack, record['blogsite_id'], result_insult, result_profanity, result_sexually_explicit, result_threat, result_identity_attack, record['blogsite_id']))
+                
+        else:
+            result_insult, result_profanity, result_sexually_explicit, result_threat, result_identity_attack = funct.get_toxicity_score(record['post'], len(record['post']))
+            commit_to_db('''INSERT INTO liwc 
+                                (blogpostid, insult, profanity, sexually_explicit, threat, identity_attack, blogsite_id) 
+                                values (%s, %s, %s, %s, %s, %s, %s)
+                                ON DUPLICATE KEY UPDATE
+                                insult=%s, profanity=%s, sexually_explicit=%s, threat=%s, identity_attack=%s, blogsite_id = %s''', (record['blogpost_id'], result_insult, result_profanity, result_sexually_explicit, result_threat, result_identity_attack, record['blogsite_id'], result_insult, result_profanity, result_sexually_explicit, result_threat, result_identity_attack, record['blogsite_id']))
 
     
 def get_reply_to(parent_comment, url):
@@ -337,9 +597,11 @@ def diff_get_article(url, record, paging=True, count=0):
     try:
         r = requests.get(url)
     except (requests.exceptions.SSLError, requests.exceptions.ConnectionError):
+        update_invalid(url)
         LOGS.append({"url":url, "error": "Max retries exceeded with url. Caused by SSLError(SSLError('bad handshake: SysCallError(10054, 'WSAECONNRESET')"})
         return []
     except requests.exceptions.InvalidSchema:
+        update_invalid(url)
         LOGS.append({"url":url, "error": "Invalid URL Schema. Check the URL"})
         return []
     #Sending Diffbot request
@@ -349,16 +611,19 @@ def diff_get_article(url, record, paging=True, count=0):
         try:
             r = requests.get(diff_endpoint, timeout=60*5)
         except requests.exceptions.Timeout:
+            update_invalid(url)
             LOGS.append({"url":url, "error": "The diffbot request timed out."})
             return []
         if r.status_code in (504,):
-            if count > 2: 
+            if count > 2:
+                update_invalid(url)
                 LOGS.append({"url":url, "error": r.text})
                 return []
             else: return diff_get_article(url, count=count+1)
         request = r.json()
     else:
         print("\nThis URL is redirecting: {}".format(url))
+        update_invalid(url)
         LOGS.append({"url":url, "error":"Redirecting URL"})
         return []
     #Catching errors  
@@ -369,8 +634,10 @@ def diff_get_article(url, record, paging=True, count=0):
                 print(f"\nRetrying with paging off due to failed page concatenation: {url}")
                 return diff_get_article(url, paging=False, count=count+1)
         elif '404' in request['error'] or '502' in request['error']:
+            update_invalid(url)
             LOGS.append({"url":url, "error":request['error']})
         else: 
+            update_invalid(url)
             print("\n{} url: {}".format(request['error'], url))
             LOGS.append({"url":url, "error":request['error']})
         return []
@@ -564,12 +831,17 @@ def get_records():
     connection = get_connection()
     with connection.cursor() as cursor:
         # Getting urls from user_blog
+        # values for processed field
+        # 0 -> not processed at all, needs to be run by diffbot
+        # -1 -> has been processed by diffbot and need to undergo post processing
+        # 2 -> not a valid URL
         cursor.execute(f"""
-                SELECT url, userid
+                SELECT *
                 FROM user_blog
                 WHERE processed = 0
-                AND status = "not_crawled"
-                AND blogpost_id is null;
+                AND status = "Not crawled"
+                AND blogpost_id is null
+                AND processed != 2;
             """)
         records = cursor.fetchall()
         # for record in records:
@@ -661,6 +933,70 @@ def get_influence_score(post_length, num_outlinks, comment_count):
 
     return influence_score_rounded
 
+# Get location from url
+def get_location(url):
+    """[summary]
+
+    Args:
+        url ([type]): [description]
+
+    Returns:
+        [type]: [description]
+    """
+    domain = urlparse(url).netloc
+
+    ip = ''
+    try:
+        ip = socket.gethostbyname(domain) if domain else None
+    except:
+        pass
+    url = 'http://ipinfo.io/' + ip  if ip else None
+    response = urlopen(url) if url else None
+    data = json.load(response) if response else None
+    location = data['country'] if data else None
+
+    return location
+
+# Cleaning text before sentiment / toxicity
+def clean_text(text):
+    """Cleans string for processing. Removes bytes, emails, and urls
+
+    Args:
+        text ([str]): text to clean
+
+    Returns:
+        Union[str, None]: Returns cleaned string, or None if no text remains after cleaning
+    """
+    if text and ''.join(text.split()):
+        if type(text) == bytes: #Decoding byte strings
+            text = text.decode('utf-8')
+        #Removing emails + ***.com urls
+        text = ' '.join([item for item in text.split() if '@' not in item and '.com' not in item])
+        text = ' '.join(text.split()) #removing all multiple spaces
+        if text: return text
+    # UNCLEAN_TEXT.inc()
+    return None
+
+# get sentiment score
+def get_sentiment_score(text):
+    """[summary]
+
+    Args:
+        text ([type]): [description]
+
+    Returns:
+        [type]: [description]
+    """
+    # Cleaning the text
+    text = clean_text(text)
+    if not text:
+        return 0  # Returning empty strings
+    # Getting Score
+    blob = TextBlob(text)
+    sentiment_score = blob.sentiment.polarity
+    sentiment_score_rounded = round(sentiment_score, 6)
+    return sentiment_score_rounded
+
 def open_keywords(use=None, fname='keywords.json',):
     with open(fname, encoding="utf-8") as json_file:
         data = json.load(json_file)
@@ -713,11 +1049,38 @@ def commit_to_db(query, data, error=0):
 
 
 
-if __name__ == "__main__":
-    diff_data = json.load(open('test.json', 'r'))
-    record = {
-        "url":"https://www.torontosun.com/news/local-news/toronto-schools-closed-to-in-class-learning",
-        "userid":"btrackerdemo@gmail.com"
-    }
+# if __name__ == "__main__":
+    # diff_data = json.load(open('test.json', 'r'))
+    # record = {
+    #     "url":"https://www.torontosun.com/news/local-news/toronto-schools-closed-to-in-class-learning",
+    #     "userid":"btrackerdemo@gmail.com",
+    #     "id":26
+    # }
     # process_diff_data(diff_data,record)
-    main()
+
+    # main()
+run_async = True
+if __name__ == "__main__":
+    if run_async:
+        # executors = {
+        #     'default': ThreadPoolExecutor(60),
+        #     'processpool': ProcessPoolExecutor(60)
+        # }
+
+        job_defaults = {
+            'coalesce': False,
+            'max_instances': 20
+        }
+        scheduler = BackgroundScheduler(job_defaults = job_defaults)
+        # scheduler = BackgroundScheduler()
+        scheduler.add_job(func=main, trigger="interval", seconds=1)
+        scheduler.start()
+
+        # Shut down the scheduler when exiting the app
+        end_script = input("Please input 'Yes' to stop the script or leave the processing running")
+        if end_script.lower() == "yes":
+            atexit.register(lambda: scheduler.shutdown())
+    
+        print('here')
+    else:
+        main()

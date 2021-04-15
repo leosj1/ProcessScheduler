@@ -56,39 +56,24 @@ class ProcessSchedule(Functions, SqlFuncs):
         """
         # sql_func = SqlFuncs(self.connect)
         connection = self.get_connection(self.connect)
-        if self.process:
-            with connection.cursor() as cursor:
-                cursor.execute(f"""
-                    select blogger, blogsite_id, count(post) total_post, max(influence_score) influence 
-                    from blogposts 
-                    where blogger is not null 
-                    and blogger != 'null' 
-                    and blogger in ({self.BLOGGER})
-                    group by blogsite_id, blogger;
-                """)
-                records = cursor.fetchall()
+        # if self.process:
+        with connection.cursor() as cursor:
+            cursor.execute(f"""
+                    SELECT *
+                    FROM liwc limit 1000
+                    """)
 
-                cursor.execute(f"""
-                        SELECT blogsite_id, blogger_name 
-                        FROM blogger
-                        WHERE blogger_name in ({self.BLOGGER})
-                        """)
-                records_blogger = cursor.fetchall()
-                blogsite_ids = [f"{x['blogsite_id']}___{x['blogger_name']}" for x in records_blogger]
+            records = cursor.fetchall()
 
-                for record in tqdm(records, desc="Blogger", ascii=True,  file=sys.stdout):
-                    if record['blogger']:
-                        if f"{record['blogsite_id']}___{record['blogger']}" not in blogsite_ids:
-                            self.update_item('''INSERT INTO blogger (blogger_name, blogsite_id, blogpost_count, influence_score) values (%s, %s, %s, %s) ''', (record['blogger'], record['blogsite_id'], record['total_post'], record['influence']), self.connect)
-                        else:
-                            self.update_item('''UPDATE blogger SET blogpost_count=%s, influence_score=%s WHERE blogsite_id = %s and blogger_name = %s;  ''', (record['total_post'], record['influence'], record['blogsite_id'], record['blogger']), self.connect)
-                        return record
+            for record in tqdm(records, desc="Blogger", ascii=True,  file=sys.stdout):
+                self.update_item('''UPDATE liwc SET analytic=%s WHERE blogpostid = %s ; ''', (record['analytic'], record['blogpostid']), self.connect)
+                # return record
 
-            connection.close()
-            cursor.close()
+        connection.close()
+        cursor.close()
 
-            print('done processing bloggers')
-            return True
+        print('done processing bloggers')
+        return True
 
     def process_entity_sentiments(self):
         """[Function to update blogpost_entitysentiment table]
@@ -160,80 +145,6 @@ class ProcessSchedule(Functions, SqlFuncs):
                     WHERE blogpost_id=%s;  
                     ''', (self.convert_to_json(terms_), topterm_, self.convert_to_json(final_dict), record['blogpost_id']), self.connect)
 
-    def process_locations(self):
-        pass
-
-    def process_blogsites(self):
-        connection = self.get_connection(self.connect)
-        with connection.cursor() as cursor:
-            query = f"""
-                SELECT *
-                FROM blogsites
-                WHERE blogsite_id in ({self.BLOGSITE_IDS})
-            """
-            cursor.execute(query)
-            records = cursor.fetchall()
-            for record in records:
-                cursor.execute(f"SELECT COUNT(*) total_post FROM blogposts where blogsite_id = {record['blogsite_id']}")
-                result = cursor.fetchall()
-            
-                if record['location'] is None or record['location'] == '':
-                    location = self.get_location(record['blogsite_url'])
-                else:
-                    location = record['location']
-
-                self.update_item('''UPDATE blogsites
-                    SET totalposts=%s, location=%s
-                    WHERE blogsite_id=%s;  ''', (result[0]['total_post'], location, record['blogsite_id']), self.connect)
-                return record
-
-        cursor.close()
-        connection.close()
-
-    def process_languages(self):
-        connection = self.get_connection(self.connect)
-        with connection.cursor() as cursor:
-            for record in self.records:
-                language = self.get_language(record['post'])
-                language = self.get_full_language(language)
-                update_query = """
-                        UPDATE blogposts
-                        SET language = %s
-                        WHERE blogpost_id = %s
-                """
-                self.update_item(update_query, (language, record['blogpost_id']), self.connect)
-
-            query = f"""SELECT blogsite_id, language, count(post) c 
-                        FROM blogposts
-                        WHERE blogsite_id in ({self.BLOGSITE_IDS}) 
-                        GROUP BY language, blogsite_id"""
-            cursor.execute(query)
-            records = cursor.fetchall()
-            
-            cursor.execute("""SELECT * from language""")
-            records_language = cursor.fetchall()
-            blog_ids_language = [str(x['blogsite_id']) + "_" + x['language'] for x in records_language]
-            
-            for record in tqdm(records, desc="Languages", ascii=True, total=len(records), file=sys.stdout, postfix="\n"):
-                if record['blogsite_id'] and record['language']:
-                    concatenated = str(record['blogsite_id']) + "_" + record['language']
-                    # lang = self.get_full_language(record['language'])
-                    # lang = lang if lang else record['language']
-
-                    lang = record['language']
-
-                    if record['language'] == 'unknown':
-                        lang = record['language'].title()
-
-                    if concatenated not in blog_ids_language:
-                        self.update_item('''INSERT INTO language (blogsite_id, language, language_count) values (%s, %s, %s) ''', (record['blogsite_id'], lang, record['c']), self.connect)
-                    else:
-                        self.update_item('''UPDATE language SET language_count=%s WHERE blogsite_id = %s and language = %s;  ''', (record['c'], record['blogsite_id'], lang), self.connect)
-                    return record
-
-        cursor.close()
-        connection.close()
-
     def process_narratives(self):
         self.process_entity_sentiments()
         stop_words = []
@@ -291,11 +202,15 @@ class ProcessSchedule(Functions, SqlFuncs):
 
 def main():
     connection_credentials = Functions().get_config2("BLOGTRACKERS")
-    ps = ProcessSchedule(connection_credentials)
-    ps.get_data_after_last_sql()
+    # connection_credentials = Functions().get_config2("DB_MOVER")
 
-    if ps.process_bloggers():
-        ps.update_trigger_table()
+    ps = ProcessSchedule(connection_credentials)
+    # ps.get_data_after_last_sql()
+
+    ps.process_bloggers()
+
+    # if ps.process_bloggers():
+        # ps.update_trigger_table()
     # ps.process_posts()
     # ps.process_blogsites()
     # ps.process_languages()
@@ -322,29 +237,33 @@ import atexit
 from apscheduler.schedulers.background import BackgroundScheduler
 from apscheduler.executors.pool import ThreadPoolExecutor, ProcessPoolExecutor
 
+run_async = False
 if __name__ == "__main__":
     # s = sched.scheduler(time.time, time.sleep)
 
     # s.enter(60, 1, main, (s,))
 
-    executors = {
-        'default': ThreadPoolExecutor(60),
-        'processpool': ProcessPoolExecutor(60)
-    }
+    if run_async:
 
-    job_defaults = {
-        'coalesce': False,
-        'max_instances': 50
-    }
-    scheduler = BackgroundScheduler(job_defaults = job_defaults)
-    # scheduler = BackgroundScheduler()
-    scheduler.add_job(func=main, trigger="interval", seconds=3)
-    scheduler.start()
+        executors = {
+            'default': ThreadPoolExecutor(60),
+            'processpool': ProcessPoolExecutor(60)
+       }
 
-    # Shut down the scheduler when exiting the app
-    atexit.register(lambda: scheduler.shutdown())
+        job_defaults = {
+            'coalesce': False,
+            'max_instances': 50
+        }
+        scheduler = BackgroundScheduler(job_defaults = job_defaults)
+        # scheduler = BackgroundScheduler()
+        scheduler.add_job(func=main, trigger="interval", seconds=3)
+        scheduler.start()
+
+        # Shut down the scheduler when exiting the app
+        atexit.register(lambda: scheduler.shutdown())
     
-    print('here')
-    # main()
+        print('here')
+    else:
+        main()
 
     

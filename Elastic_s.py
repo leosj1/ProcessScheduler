@@ -1,4 +1,5 @@
-from elasticsearch import Elasticsearch, AsyncElasticsearch
+from elasticsearch import Elasticsearch
+# from elasticsearch import AsyncElasticsearch
 import json
 import time
 from elasticsearch import helpers
@@ -190,24 +191,24 @@ class Es():
 
 # es.delete_record(client, "entity_narratives", "fs6GDHcBzeEK5SP2XyM3", "")
 
-class AsyncEs():
-    async def get_client_async(self, ip):
-        count = 0
-        while True:
-            count += 1
-            try:
-                client = AsyncElasticsearch([
-                    {'host': ip},
-                ])
-                return client
-            #Error handeling
-            except Exception as e:
-                time.sleep(3)
-                count += 1
-                if count > 10:
-                    print(
-                        "Failed to connect to Elasticsearch {} times in a row".format(count))
-                else:
-                    # Uncaught errors
-                    raise Exception(
-                        "We aren't catching this Elasticsearch get_client Error: {}".format(e))
+# class AsyncEs():
+#     async def get_client_async(self, ip):
+#         count = 0
+#         while True:
+#             count += 1
+#             try:
+#                 client = AsyncElasticsearch([
+#                     {'host': ip},
+#                 ])
+#                 return client
+#             #Error handeling
+#             except Exception as e:
+#                 time.sleep(3)
+#                 count += 1
+#                 if count > 10:
+#                     print(
+#                         "Failed to connect to Elasticsearch {} times in a row".format(count))
+#                 else:
+#                     # Uncaught errors
+#                     raise Exception(
+#                         "We aren't catching this Elasticsearch get_client Error: {}".format(e))
